@@ -1,0 +1,158 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8">  
+    {% include head.html %}
+    <style>
+    .login{
+     position: relative;
+     top: 50%;
+     left: 15%;
+     height: 150px;
+     width: 350px;
+     padding: 10px;
+
+    }
+
+    .login input[type=text]{
+     width: 250px;
+     height: 30px;
+     background: transparent;
+     border: 1px solid rgba(4, 99, 232,0.5);
+     border-radius: 2px;
+     color: #0312a0;
+     font-family: 'Exo', sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+     padding: 4px;
+    }
+
+    .login input[type=password]{
+     width: 250px;
+     height: 30px;
+     background: transparent;
+     border: 1px solid rgba(4, 99, 232,0.5);
+     border-radius: 2px;
+     color: #0312a0;
+     font-family: 'Exo', sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+     padding: 4px;
+     margin-top: 10px;
+    }
+
+    .login input[type=button]{
+     width: 260px;
+     height: 35px;
+     background: #0463e8;
+     border: 1px solid #0463e8;
+     cursor: pointer;
+     border-radius: 2px;
+     color: #000;
+     font-family: 'Exo', sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+     padding: 6px;
+     margin-top: 10px;
+    }
+
+    .login input[type=button]:hover{
+     opacity: 0.8;
+    }
+
+    .login input[type=button]:active{
+     opacity: 0.6;
+    }
+
+    .login input[type=text]:focus{
+     outline: none;
+     border: 1px solid rgba(4, 99, 232,1.0);
+    }
+
+    .login input[type=password]:focus{
+     outline: none;
+     border: 1px solid rgba(4, 99, 232,1.0);
+    }
+
+    .login input[type=button]:focus{
+     outline: none;
+    }
+
+    ::-webkit-input-placeholder{
+       color: rgba(4, 99, 232,0.6);
+    }
+
+    ::-moz-input-placeholder{
+       color: rgba(4, 99, 232,0.6);
+    }
+  </style>
+</head>
+<body>
+  <!--oncontextmenu="return false"-->
+    {% include nav.html %}
+    <!-- Header -->
+    <header class="header flex" role="banner">
+        <div class="container animated fadeIn">
+            <div class="row">
+                    <a href="{{ site.url }}">
+                        <img src="{{ site.logo }}" class="img-circle zoombtn animated rotateIn">
+                    </a>
+                    <h3 class="title">
+                        <!--<a class="zoombtn" href="{{ site.url }}">-->
+                        	<p style="font-size:1.2rem;font-weight:300">{{ site.title }}</p>
+			            <!--</a>-->
+                    </h3>
+                    <hr class="hr-line">
+                    <h3 class="title">
+                        <!--<a href="{{ site.url }}">-->
+                        	<p style="font-size:1rem;font-weight:300">{{ site.bio }}</p>
+			            <!--</a>-->
+                    </h3>
+                    <!--{% include social-links.html %}-->
+                  <hr class="hr-line">
+                  <h3 class="title">
+                         <a class="btn zoombtn" href="{{ site.url }}/about">
+                         About
+                         </a>
+                         <a class="btn zoombtn" href="{{ site.url }}/posts">
+                         Posts
+                         </a>
+                         <a class="btn zoombtn" href="{{ site.url }}/projects">
+                         Projects
+                         </a>
+                 </h3>
+                 <!-- Login -->
+                 <hr class="hr-line">
+                <form name="login">
+               		<div class="login">
+               				<input type="text" placeholder="username" name="userid"><br>
+               				<input type="password" placeholder="password" name="pswrd"><br>
+               				<input type="button" onclick="check(this.form)" value="Login"/>
+               		</div>
+               </form>
+            </div>
+        </div>
+    </header>
+    {% include scripts.html %}
+    <script language="javascript">
+    function check(form)
+    {
+
+     if(form.userid.value == "david" && form.pswrd.value == "asdf")
+      {
+        window.open('https://www.youtube.com/c/dewclarke?sub_confirmation=1')
+      }
+     else
+     {
+       alert("Wrong username or password")
+      }
+    }
+    </script>
+</body>
+</html>
