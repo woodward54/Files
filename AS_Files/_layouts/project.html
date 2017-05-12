@@ -13,7 +13,7 @@ layout: compress
     {% include nav.html %}
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script src="{{ site.url }}/assets/js/firebaseConfig.js"></script>
-    <script src="{{ site.url }}/assetscd/js/Push Map Data.js"></script>
+    <script src="{{ site.url }}/assets/js/Push Map Data.js"></script>
     <!-- Header -->
     <header class="header" role="banner">
         <div class="wrapper animated fadeIn">
@@ -26,10 +26,10 @@ layout: compress
                 </div>
                 <div class="map">
                   <div class="Rect">
-                    <div id="map"></div>
+                    <div id="map" style="width:100%;height:400px;"></div>
                     <script src="{{ site.url }}/assets/js/Google Maps.js"></script>
-                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
-                  async defer></script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
+                    async defer></script>
                   </div>
                 </div>
             </div>

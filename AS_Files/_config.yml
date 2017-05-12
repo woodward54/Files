@@ -4,11 +4,11 @@ bio:                'UAV Data Collection and Reporting'
 description:        "Moon is a minimal, one column jekyll theme for your blog."
 reading_time:       true
 words_per_minute:   200
-logo:               'http://canberragrammar.github.io/DroneSchool/images/quadcopter_logo.png'
+logo:               '/assets/img/AERIUM.png'
 background:         'http://alyeska-pipeline.com/assets/uploads/pagestructure/NewsCenter_MediaResources_UploadArea_Entries/634957562573372722_PipelineTripSept2009_102.JPG'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                http://aeriumsolution.com/
+url:                http://aeriumsolution.com
 
 # Jekyll
 permalink:          /:title/
