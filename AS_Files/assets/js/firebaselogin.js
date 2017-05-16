@@ -29,10 +29,15 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 });
 
 firebase.auth().onAuthStateChanged(function(user){
-    if (user){
-      var userid = user.displayName;
-      document.getElementById("user").innerHTML = "TEST";
-    } else{
+    var user = firebase.auth().currentUser;
+    var name, email, photoUrl, uid,emailVerified;
+
+    if (user != null){
+      name = user.displayName;
+      email = user.email;
+      console.log(name);
+      console.log(email);
+      document.getElementById(name).innerHTML = userid;
     }
 });
 btnLogout.addEventListener('click', e => {
