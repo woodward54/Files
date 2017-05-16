@@ -30,6 +30,15 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 firebase.auth().onAuthStateChanged(function(user){
     var user = firebase.auth().currentUser;
+  user.updateProfile({
+  displayName: "Aerium",
+  photoURL: "https://example.com/jane-q-user/profile.jpg"
+  }).then(function() {
+  }, function(error) {
+      console.log(error);
+  });
+
+
     var name, email, photoUrl, uid,emailVerified;
 
     if (user != null){
@@ -37,7 +46,7 @@ firebase.auth().onAuthStateChanged(function(user){
       email = user.email;
       console.log(name);
       console.log(email);
-      document.getElementById(name).innerHTML = userid;
+      document.getElementById("usern").innerHTML = name;
     }
 });
 btnLogout.addEventListener('click', e => {
