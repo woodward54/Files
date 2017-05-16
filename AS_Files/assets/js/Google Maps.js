@@ -14,7 +14,9 @@ var SDlist = [];
 
 var count = 0;
 
-var pullData = firebase.database().ref('Aerium/');
+var user = firebase.auth().currentUser.displayName;
+
+var pullData = firebase.database().ref(user + '/');
 
 /*pullData.once('value', function (snapshot) {
     snapshot.forEach(function () {
