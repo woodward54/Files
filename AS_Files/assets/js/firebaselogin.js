@@ -23,13 +23,18 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser){
     console.log(firebaseUser + " Logged In");
-    var userid = firebaseUser.displayName;
-    document.getElementById("user").innerHTML = userid;
 } else {
     console.log("Logged out");
   }
 });
 
+firebase.auth().onAuthStateChanged(function(user){
+    if (user){
+      var userid = user.displayName;
+      document.getElementById("user").innerHTML = userid;
+    } else{  
+    }
+});
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
   window.open("http://aeriumsolution.com/","_self");
