@@ -14,7 +14,7 @@ var SDlist = [];
 
 var count = 0;
 
-var pullData = firebase.database().ref();
+var pullData = firebase.database().ref('Aerium/');
 
 /*pullData.once('value', function (snapshot) {
     snapshot.forEach(function () {
@@ -32,8 +32,8 @@ var pullData = firebase.database().ref();
 /*    snapshot.forEach(function () {
 SDlist.push();
 })*/
-             
-      
+
+
 var map;
 //Innitializes the map
 
@@ -147,7 +147,7 @@ function initMap() {
                 attachMessage(marker, contentString);
             }
         }
-           
+
 
 
         // HEY! Leave this alone, It's delicate
@@ -164,4 +164,3 @@ function initMap() {
 
     });
 }
-           

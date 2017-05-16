@@ -8,13 +8,13 @@
 
 }
 
-.login input[type=text]{
+.login input[type=email]{
  width: 250px;
  height: 30px;
  background: transparent;
- border: 1px solid rgba(4, 99, 232,0.5);
+ border: 1px solid 	#A9A9A9;
  border-radius: 2px;
- color: #0312a0;
+ color: #000000;
  font-family: 'Exo', sans-serif;
  font-size: 16px;
  font-weight: 400;
@@ -25,9 +25,9 @@
  width: 250px;
  height: 30px;
  background: transparent;
- border: 1px solid rgba(4, 99, 232,0.5);
+ border: 1px solid 	#A9A9A9;
  border-radius: 2px;
- color: #0312a0;
+ color: #000000;
  font-family: 'Exo', sans-serif;
  font-size: 16px;
  font-weight: 400;
@@ -38,11 +38,11 @@
 .login input[type=button]{
  width: 260px;
  height: 35px;
- background: #0463e8;
- border: 1px solid #0463e8;
+ background: 	#A9A9A9;
+ border: 1px solid 	#A9A9A9;
  cursor: pointer;
  border-radius: 2px;
- color: #000;
+ color: #000000;
  font-family: 'Exo', sans-serif;
  font-size: 16px;
  font-weight: 400;
@@ -58,14 +58,14 @@
  opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.login input[type=email]:focus{
  outline: none;
- border: 1px solid rgba(4, 99, 232,1.0);
+ border: 1px solid #A9A9A9;
 }
 
 .login input[type=password]:focus{
  outline: none;
- border: 1px solid rgba(4, 99, 232,1.0);
+ border: 1px solid #A9A9A9;
 }
 
 .login input[type=button]:focus{
@@ -73,9 +73,9 @@
 }
 
 ::-webkit-input-placeholder{
-   color: rgba(4, 99, 232,0.6);
+   color: #A9A9A9;
 }
 
 ::-moz-input-placeholder{
-   color: rgba(4, 99, 232,0.6);
+   color: #A9A9A9;
 }

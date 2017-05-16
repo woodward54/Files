@@ -1,10 +1,26 @@
     <!-- JS -->
-    <script src="{{ site.url }}/assets/js/jquery-1.12.0.min.js"></script>
+    <script src="{{ site.url }}/assets/js/jquery.js"></script>
     <script src="{{ site.url }}/assets/js/jquery.dlmenu.min.js"></script>
     <script src="{{ site.url }}/assets/js/jquery.goup.min.js"></script>
     <script src="{{ site.url }}/assets/js/jquery.magnific-popup.min.js"></script>
     <script src="{{ site.url }}/assets/js/jquery.fitvid.min.js"></script>
     <script src="{{ site.url }}/assets/js/scripts.js"></script>
+    <script src="{{ site.url }}/assets/js/firebaselogin.js"></script>
+    <script src="{{ site.url }}/assets/js/jquery.backstretch.js"></script>
+    <script src="{{ site.url }}/assets/js/wow.min.js"></script>
+    <script type="text/javascript">(new WOW).init();</script>
+<script>
+    $.backstretch([
+      "{{ site.url }}/assets/img/pic3.jpg",
+      "{{ site.url }}/assets/img/pic1.jpg",
+      "{{ site.url }}/assets/img/pic4.jpg",
+      "{{ site.url }}/assets/img/pic5.jpg",
+      "{{ site.url }}/assets/img/pic6.jpg"
+      ], {
+        fade: 750,
+        duration: 5000
+    });
+</script>
     {% if site.google.analytics %}
     <!-- Asynchronous Google Analytics snippet -->
     <script>
@@ -12,7 +28,7 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', '{{ site.google.analytics }}', 'auto');  
+      ga('create', '{{ site.google.analytics }}', 'auto');
       ga('require', 'linkid', 'linkid.js');
       ga('send', 'pageview');
     </script>

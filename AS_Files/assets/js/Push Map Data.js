@@ -4,7 +4,7 @@ var database = firebase.database();
 
 // Function for writting SD data to firebase
 function pushMapBlipData(Meth, Temp, Hum, Lat, Long, Spot) {
-    firebase.database().ref('Reading ' + Spot).setWithPriority
+    firebase.database().ref('Aerium/Reading ' + Spot).setWithPriority
         (
             {
                 Meth: Meth,

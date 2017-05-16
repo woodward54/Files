@@ -12,17 +12,16 @@ layout: compress
 <body>
     {% include nav.html %}
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-    <script src="{{ site.url }}/assets/js/firebaseConfig.js"></script>
+    <script src="{{ site.url }}/assets/js/firebaseconfig.js"></script>
     <script src="{{ site.url }}/assets/js/Push Map Data.js"></script>
     <!-- Header -->
     <header class="header" role="banner">
         <div class="wrapper animated fadeIn">
             <div class="content">
                 <div class="post-title">
-                    <h1>Boren's Data</h1>
-                    <a class="btn zoombtn" href="{{site.url}}">
-                        <i class="fa fa-home"></i>
-                    </a>
+                    <h1><var id="user"></var>'s Data</h1>
+                    <input id="btnLogin" type="button" value="Login" style="display: none;">
+                    <input id="btnLogout" class="btn btn-danger" type="button" value="Logout">
                 </div>
                 <div class="map">
                   <div class="Rect">
@@ -36,7 +35,5 @@ layout: compress
         </div>
     </header>
     {% include scripts.html %}
-    <script src="{{ site.url }}/assets/js/wow.min.js"></script>
-    <script type="text/javascript">(new WOW).init();</script>
 </body>
 </html>

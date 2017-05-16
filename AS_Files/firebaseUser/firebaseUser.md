@@ -1,6 +1,6 @@
 ---
-layout: project
-title: All Projects
+layout: firebaseUser
+title: USERS's Data
 excerpt: "A List of Projects"
 comments: false
 ---
