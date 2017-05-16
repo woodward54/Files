@@ -31,8 +31,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 firebase.auth().onAuthStateChanged(function(user){
     if (user){
       var userid = user.displayName;
-      document.getElementById("user").innerHTML = userid;
-    } else{  
+      document.getElementById("user").innerHTML = "TEST";
+    } else{
     }
 });
 btnLogout.addEventListener('click', e => {
