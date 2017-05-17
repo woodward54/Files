@@ -8,7 +8,7 @@ var name = user.displayName
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           var childData = childSnapshot.val();
-          console.log("Key: "childKey);
+          console.log("Key: " + childKey);
           console.log("Data: " + childData);
         });
       });
