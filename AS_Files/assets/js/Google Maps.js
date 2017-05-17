@@ -14,9 +14,16 @@ var SDlist = [];
 
 var count = 0;
 
-var user = firebase.auth().currentUser.displayName;
+var user = firebase.auth().currentUser;
+if (user != null){
+  name = user.displayName;
+  email = user.email;
+  console.log("Googles: " + name);
+} else {
+  console.log("GM Error");
+}
 
-var pullData = firebase.database().ref(user + '/');
+var pullData = firebase.database().ref(name + '/');
 
 /*pullData.once('value', function (snapshot) {
     snapshot.forEach(function () {
