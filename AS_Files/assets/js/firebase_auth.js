@@ -15,8 +15,10 @@ firebase.auth().onAuthStateChanged(function(user){
     if (user != null){
       name = user.displayName;
       email = user.email;
-      console.log(name);
-      console.log(email);
+      uid = user.uid;
+      console.log("Disp Name: " + name);
+      console.log("Email: " + email);
+      console.log("Uid: " + uid);
       document.getElementById("usern").innerHTML = name;
     }
 });

@@ -18,7 +18,7 @@ var user = firebase.auth().currentUser;
 if (user != null){
   name = user.displayName;
   email = user.email;
-  console.log("Loading: " + name + "'s Data'");
+  console.log("Loading: " + name + "'s Data");
   var pullData = firebase.database().ref(name + '/');
 } else {
   console.log("ERROR: Not logged in");
