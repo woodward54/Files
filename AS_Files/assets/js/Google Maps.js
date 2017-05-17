@@ -20,7 +20,7 @@ if (user != null){
   name = user.displayName;
   email = user.email;
   console.log("Loading: " + name + "'s Data");
-  var pullData = firebase.database().ref(name + "/05_01_2017/Reading " + spot);
+  var pullData = firebase.database().ref(name + "/05_17_2017/Reading " + spot);
 } else {
   console.log("ERROR: Not logged in");
 }

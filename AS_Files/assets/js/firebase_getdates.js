@@ -14,9 +14,8 @@ var user = firebase.auth().currentUser;
           i.setAttribute('type',"checkbox");
           i.setAttribute('name',childKey);
 
-          i.append(i);
 
-          document.getElementById('dates')[0].append(i);
+          document.getElementById('dates')[0];
         });
       });
     }
