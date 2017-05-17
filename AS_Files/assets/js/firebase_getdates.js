@@ -1,9 +1,9 @@
 var user = firebase.auth().currentUser;
-var name = user.displayName;
-console.log("getdates started");
+var name = user.displayName
+
     if (user != null){
-      console.log("getdates if");
-      console.log(name);
       const dbRefObject = firebase.database().ref().child(name);
+      const dbRefList = dbRefObject.child()
       dbRefObject.on('value', snap => console.log(snap.val()));
+      dbRefList.on('value', snap => console.log(snap.val()));
     }
