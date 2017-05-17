@@ -5,5 +5,5 @@ console.log("getdates started");
       console.log("getdates if");
       console.log(name);
       const dbRefObject = firebase.database().ref().child(name);
-      dbRefObject.on('value', snap => consle.log(snap.val()));
+      dbRefObject.on('value', snap => console.log(snap.val()));
     }
