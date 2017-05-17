@@ -19,11 +19,12 @@ if (user != null){
   name = user.displayName;
   email = user.email;
   console.log("Googles: " + name);
+  var pullData = firebase.database().ref(name + '/');
 } else {
   console.log("GM Error");
 }
 
-var pullData = firebase.database().ref(name + '/');
+
 
 /*pullData.once('value', function (snapshot) {
     snapshot.forEach(function () {
