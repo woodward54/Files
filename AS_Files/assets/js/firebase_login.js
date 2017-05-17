@@ -14,7 +14,7 @@ const auth = firebase.auth();
 const promise = auth.signInWithEmailAndPassword(email,pass);
 promise.catch(e => console.log(e.message));
 firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser != null){
+      if (firebaseUser){
         window.open("/firebaseUser","_self");
     } else {
       alert("Wrong username or password!");
