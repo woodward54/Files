@@ -22,3 +22,9 @@ firebase.auth().onAuthStateChanged(function(user){
       document.getElementById("usern").innerHTML = name;
     }
 });
+
+var user = firebase.auth().currentUser;
+
+user.updateProfile({
+  displayName: "Boren"
+});
