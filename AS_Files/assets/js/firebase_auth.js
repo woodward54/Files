@@ -11,9 +11,9 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 firebase.auth().onAuthStateChanged(function(user){
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid,emailVerified;
-    user.updateProfile({
-      displayName: "Boren"
-    });
+    //user.updateProfile({
+      //displayName: "Boren"
+    //});
 
     if (user != null){
       name = user.displayName;
