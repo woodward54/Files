@@ -10,16 +10,14 @@ var user = firebase.auth().currentUser;
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
 
+          var f document.getElementById('dates');
+          var i = document.createElement("input");
+          i.setAttribute('type',"checkbox");
+          i.setAttribute('name',childKey);
+
+          f.appendChild(i);
+
+          document.getElementById('dates')[0].appendChild(f);
         });
       });
     }
-
-console.log(childKey(2));
-/*for (childKey(n)
-  var s = document.createElement("input");
-    s.setAttribute('type',"checkbox");
-    s.setAttribute('value',"");
-
-    f.appendChild(s);
-
-    document.getElementsByTagName('body')[0].appendChild(f);*/
