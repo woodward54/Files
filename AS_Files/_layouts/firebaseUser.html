@@ -14,7 +14,7 @@ layout: compress
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script src="{{ site.url }}/assets/js/firebase_config.js"></script>
     <script src="{{ site.url }}/assets/js/firebase_auth.js"></script>
-    <script src="{{ site.url }}/assets/js/Push Map Data.js"></script>
+    <!--<script src="{{ site.url }}/assets/js/Push Map Data.js"></script>-->
     <!-- Header -->
     <header class="header" role="banner">
         <div class="wrapper animated fadeIn">
@@ -28,11 +28,17 @@ layout: compress
                   <div class="Rect">
                     <div id="map" style="width:100%;height:400px;"></div>
                   </div>
+                  <div>
+                    <form>
+                      <input type="checkbox" value="DATE1">
+                    </form>
+                  </div>
                 </div>
             </div>
         </div>
     </header>
     {% include scripts.html %}
+    <script src="{{ site.url }}/assets/js/firebase_getdates.js"></script>
     <script src="{{ site.url }}/assets/js/Google Maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
     async defer></script>

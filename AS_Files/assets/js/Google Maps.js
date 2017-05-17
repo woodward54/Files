@@ -14,12 +14,13 @@ var SDlist = [];
 
 var count = 0;
 
+
 var user = firebase.auth().currentUser;
 if (user != null){
   name = user.displayName;
   email = user.email;
   console.log("Loading: " + name + "'s Data");
-  var pullData = firebase.database().ref(name + '/');
+  var pullData = firebase.database().ref(name + "/" date + "/reading" + spot);
 } else {
   console.log("ERROR: Not logged in");
 }
