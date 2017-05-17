@@ -7,9 +7,7 @@ var name = user.displayName
       dbRefObject.on('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
-          var childData = childSnapshot.val();
           console.log("Key: " + childKey);
-          console.log("Data: " + childData);
         });
       });
     }
