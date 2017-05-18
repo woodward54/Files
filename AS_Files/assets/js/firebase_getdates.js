@@ -14,9 +14,8 @@ var user = firebase.auth().currentUser;
           i.type = "checkbox";
           i.value = childKey;
 
-            div.appendChild(i);
-            var cont = document.getElementById('dates');
-            cont.appendChild(div);
+          div.appendChild(i);
+          $("dates").append(div);
         });
       });
     }
