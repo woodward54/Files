@@ -23,9 +23,11 @@ firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
       console.log("Loading: " + name + "'s Data");
+      var pullData = firebase.database().ref(name + "/05_01_2017/");
+      
     }
 });
-var pullData = firebase.database().ref(name + "/05_01_2017/");
+
 
 function initMap() {
 
