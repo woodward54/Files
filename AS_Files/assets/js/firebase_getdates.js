@@ -9,17 +9,13 @@ var user = firebase.auth().currentUser;
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
 
-          var div = document.createElement('div')
-          var i = document.createElement('input');
-          i.setAttribute('type','checkbox');
-          i.setAttribute('name',childKey);
-          i.setAttribute('value',childKey);
+          var div = document.createElement("div")
+          var i = document.createElement("input");
+          i.type = "checkbox";
+          i.value = childKey;
 
-
-          if (i && div != null){
-            div.appendChild(i);
-            var cont = document.getElementById('dates');
-            cont.appendChild(div);
+          div.appendChild(i);
+            var cont = document.getElementById('dates')[0].appendChild(div);
           }
         });
       });
