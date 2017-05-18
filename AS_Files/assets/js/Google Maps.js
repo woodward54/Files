@@ -19,14 +19,11 @@ var count = 0;
 // Innitializes the map
 var map;
 
-var i = 0
-while (i === 0) {
-  var user = firebase.auth().currentUser;
+firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
       email = user.email;
       console.log("Loading: " + name + "'s Data");
-      i = 1
     }
 }
 
