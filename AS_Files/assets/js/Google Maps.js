@@ -24,7 +24,10 @@ firebase.auth().onAuthStateChanged(user => {
       name = user.displayName;
       console.log("Loading: " + name + "'s Data");
       var pullData = firebase.database().ref(name + "/05_01_2017/");
-      
+
+    } else{
+      console.log("ERROR: Not Logged In")
+      alert("ERROR: Not Logged In")
     }
 });
 
