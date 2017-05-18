@@ -1,8 +1,8 @@
 //Add a realtime auth listener
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
-  if (firebaseUser){
-    console.log(firebaseUser + " Logged In");
+firebase.auth().onAuthStateChanged(user => {
+  if (user){
+    console.log(user + " Logged In");
 } else {
     console.log("Logged out");
   }
