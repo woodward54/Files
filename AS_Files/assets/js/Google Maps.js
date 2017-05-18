@@ -1,73 +1,66 @@
 // JavaScript source code
 
-
-    function SDlog(inMeth, inTemp, inHum, inLat, inLong, inID) {
-        this.Meth = inMeth;
-        this.Temp = inTemp;
-        this.Hum = inHum;
-        this.Lat = inLat;
-        this.Long = inLong;
-        this.ID = inID;
-    }
-
-var SDlist = [];
-
-var count = 0;
-
-
 var user = firebase.auth().currentUser;
-if (user != null){
-  name = user.displayName;
-  email = user.email;
-  console.log("Loading: " + name + "'s Data");
-  var pullData = firebase.database().ref(name + "/05_01_2017/");
+if (user != null) {
+    name = user.displayName;
+    email = user.email;
+    console.log("Loading: " + name + "'s Data");
+    var pullData = firebase.database().ref(name + "/05_01_2017/");
 } else {
-  console.log("ERROR: Not logged in");
+    console.log("ERROR: Not logged in");
 }
 
 
+// Class constructor for mapBlip
+function mapBlip(inMeth, inTemp, inHum, inLat, inLong, inID, inTime) {
+    this.Meth = inMeth;
+    this.Temp = inTemp;
+    this.Hum = inHum;
+    this.Lat = inLat;
+    this.Long = inLong;
+    this.ID = inID;
+    this.Time = inTime;
+}
 
-/*pullData.once('value', function (snapshot) {
-    snapshot.forEach(function () {
-        SDlist.push(new SDlog(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID));
-        console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Temp + " " + snapshot.val()["Reading " + count].Hum + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID);
-        count++;
-    });*/
-//console.log(snapshot.val())
-//console.log(snapshot.val().Meth + " " + snapshot.val().Temp + " " + snapshot.val().Hum + " " + snapshot.val().Lat + " " + snapshot.val().Long + " " + snapshot.val().ID);
-
-//console.log(SDlist.length);
-
-//console.log(SDlist);
-//new SDlog(Meth[count], Temp[count], Hum[count], Lat[count], Long[count], count)
-/*    snapshot.forEach(function () {
-SDlist.push();
-})*/
-
-
+// Array for storing mapBlip's
+var blipList = [];
+// Iteration variable
+var count = 0;
+// Innitializes the map
 var map;
-//Innitializes the map
+
 
 
 function initMap() {
 
+    /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
+     * running the .forEach() function loops through the children pushing their data onto the blipList array. */
     pullData.once('value', function (snapshot) {
         snapshot.forEach(function () {
-            SDlist.push(new SDlog(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID));
-            console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Temp + " " + snapshot.val()["Reading " + count].Hum + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID);
+            blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID,/* snapshot.val()["Reading " + count].time*/"00:00:00"));
+            console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Temp + " " + snapshot.val()["Reading " + count].Hum + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " " );
             count++;
         });
-        console.log(snapshot.val())
+       console.log(snapshot.val())
 
-
-
+        // Creates the map centered around the spot of the first Lat and Long values
         map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: SDlist[0].Lat, lng: SDlist[0].Long },
+            center: { lat: blipList[0].Lat, lng: blipList[0].Long },
             zoom: 17,
         });
 
+        // Function that assigns the same info window to each marker node, this allows there to only be one info window on the screen at a time
+        var infowindow = new google.maps.InfoWindow();
+        function attachMessage(marker, contentString) {
 
-        //Creates the red and green marker icons
+            marker.addListener('click', function () {
+                infowindow.open(marker.get('map'), marker);
+                infowindow.setContent(contentString);
+            });
+        }
+
+
+        //Creates the colored marker icons
         var circleRed = {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: 'red',
@@ -102,6 +95,8 @@ function initMap() {
         };
 
 
+        var marker;
+        var contentString;
 
         //This for loop will take a count of our individual data points, and plot their info to them in an info window, PLEASE don't mess with, it's delicate
         var numLocations = count;   //Num locations is ALSO the size of all of the data arrays!
@@ -109,69 +104,63 @@ function initMap() {
 
         for (count = 0; count < numLocations - 1; count++) {
 
-
-            var contentString = '<div id="content">' +
+            // String of text for the click window
+            contentString = '<div id="content">' +
                 '<div id="siteNotice">' +
                 '</div>' +
-                '<h1 id="firstHeading" class="firstHeading">Info</h1>' +
+                '<h1 id="firstHeading" class="firstHeading">Reading ' + (count+1) + '</h1>' +
                 '<div class="MapDisp">' +
-                  '<p>LATITUDE: <strong>' + SDlist[count].Lat + '</strong><br>LONGITUDE: <strong>' + SDlist[count].Long + '</strong><br>METHANE: <strong>' + SDlist[count].Meth + '</strong><br>TEMPERATURE: <strong>' + SDlist[count].Temp + '</strong><br> HUMIDITY: <strong>' + SDlist[count].Hum + '</strong><br><\p><\div>';
+                '<p>LATITUDE: <strong>' + blipList[count].Lat + '</strong><br>LONGITUDE: <strong>' + blipList[count].Long + '</strong><br>METHANE: <strong>' + blipList[count].Meth + '</strong><br>TEMPERATURE: <strong>' + blipList[count].Temp + '</strong><br> HUMIDITY: <strong>' + blipList[count].Hum + '</strong><br> TIME: <strong>' + blipList[count].Time + '</strong><br><\p><\div>';
 
-            if (SDlist[count].Meth > 400) {
-                var marker = new google.maps.Marker
+            if (blipList[count].Meth > 400) {
+                marker = new google.maps.Marker
                     ({
-                        position: { lat: SDlist[count].Lat, lng: SDlist[count].Long },
+                        position: { lat: blipList[count].Lat, lng: blipList[count].Long },
                         icon: circleRed,
                         map: map,
-                        title: 'GeoPoint' + (count + 1)
+                        title: 'Reading ' + (count + 1)                       
                     });
                 attachMessage(marker, contentString);
             }
-            else if (SDlist[count].Meth > 300) {
-                var marker = new google.maps.Marker
+            else if (blipList[count].Meth > 300) {
+                marker = new google.maps.Marker
                     ({
-                        position: { lat: SDlist[count].Lat, lng: SDlist[count].Long },
+                        position: { lat: blipList[count].Lat, lng: blipList[count].Long },
                         icon: circleOrange,
                         map: map,
-                        title: 'GeoPoint' + (count + 1)
+                        title: 'Reading ' + (count + 1)
                     });
                 attachMessage(marker, contentString);
             }
-            else if (SDlist[count].Meth > 150) {
-                var marker = new google.maps.Marker
+            else if (blipList[count].Meth > 150) {
+                marker = new google.maps.Marker
                    ({
-                       position: { lat: SDlist[count].Lat, lng: SDlist[count].Long },
+                       position: { lat: blipList[count].Lat, lng: blipList[count].Long },
                        icon: circleYellow,
                        map: map,
-                       title: 'GeoPoint' + (count + 1)
+                       title: 'Reading ' + (count + 1)
                    });
                 attachMessage(marker, contentString);
             }
             else {
-                var marker = new google.maps.Marker
+                marker = new google.maps.Marker
                     ({
-                        position: { lat: SDlist[count].Lat, lng: SDlist[count].Long },
+                        position: { lat: blipList[count].Lat, lng: blipList[count].Long },
                         icon: circleGreen,
                         map: map,
-                        title: 'GeoPoint' + (count + 1)
+                        title: 'Reading ' + (count + 1)
                     });
                 attachMessage(marker, contentString);
             }
         }
-
-
-
-        // HEY! Leave this alone, It's delicate
-        function attachMessage(marker, contentString) {
-            var infowindow = new google.maps.InfoWindow({ content: contentString });
-
-            marker.addListener('click', function ()
-            { infowindow.open(marker.get('map'), marker); });
-        }
-
-        for (var i = 0; i < (count) ; i++) {
-            pushMapBlipData(SDlist[i].Meth, SDlist[i].Temp, SDlist[i].Hum, SDlist[i].Lat, SDlist[i].Long, SDlist[i].ID);
-        }
+         
+ 
+        //  COMMENTED OUT BECAUSE IT'S ONLY NECESSARY FOR DEBUGGING/FORMATING DATA
+        // Puts data onto the fire base PATH IS DEFINED IN INDEX SCRIPT OR "Push Map Data.js"
+        /*for (var i = 0; i < (count+1); i++) {
+            pushMapBlipData(blipList[i].Meth, blipList[i].Temp, blipList[i].Hum, blipList[i].Lat, blipList[i].Long, blipList[i].ID, blipList[i].Time);
+        }*/
 
     });
 }
+           

@@ -9,12 +9,16 @@ var user = firebase.auth().currentUser;
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
+          createdate(childKey);
 
-          var i = document.createElement("input");
-          i.setAttribute('type',"checkbox");
-          i.setAttribute('name',childKey);
-
-          document.getElementById('dates')[0].appendChild(i);
         });
       });
     }
+function createdate(childKey) {
+  var i = document.createElement("input");
+  i.setAttribute('type',"checkbox");
+  i.setAttribute('name',childKey);
+  i.appendChild(i);
+  document.getElementById('dates')[0].appendChild(i);
+
+}
