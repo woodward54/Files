@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(user => {
       email = user.email;
       console.log("Loading: " + name + "'s Data");
     }
-}
+});
 
 var pullData = firebase.database().ref(name + "/05_01_2017/");
 
