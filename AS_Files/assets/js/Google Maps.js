@@ -20,7 +20,7 @@ var count = 0;
 var map;
 
 
-firebase.auth().onAuthStateChanged(function(user){
+
   var user = firebase.auth().currentUser;
   if (user != null) {
       name = user.displayName;
@@ -32,11 +32,8 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log("ERROR: Not logged in");
     }
 
-});
 
 function initMap() {
-
-
 
       pullData.on('value', function (snapshot) {
           snapshot.forEach(function () {
