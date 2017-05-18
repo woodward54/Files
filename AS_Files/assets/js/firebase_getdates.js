@@ -9,13 +9,14 @@ firebase.auth().onAuthStateChanged(user => {
 
           //var div = document.createElement("div");
           var i = document.createElement("input");
-          var text = document.createTextNode(" " + childKey);
-          var br = document.createElement('br');
+
           i.type = "checkbox";
           i.value = childKey;
 
+          document.getElementById("dates").appendChild(i);
           var div = document.getElementById("dates");
-          div.appendChild(i);
+          var text = document.createTextNode(" " + childKey);
+          var br = document.createElement('br');
           div.appendChild(text);
           div.appendChild(br);
           //$(".dates").append(div);
