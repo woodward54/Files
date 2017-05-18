@@ -19,17 +19,18 @@ var count = 0;
 // Innitializes the map
 var map;
 
+var i = 0
+while (i === 0) {
+  var user = firebase.auth().currentUser;
+  if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      console.log("Loading: " + name + "'s Data");
+      i = 1
+    }
+}
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user){
-    name = user.displayName;
-    email = user.email;
-    console.log("Loading: " + name + "'s Data");
-    var pullData = firebase.database().ref(name + "/05_01_2017/");
-} else {
-    console.log("ERROR: Not logged in");
-  }
-});
+var pullData = firebase.database().ref(name + "/05_01_2017/");
 
 function initMap() {
 
