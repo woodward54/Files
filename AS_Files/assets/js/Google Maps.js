@@ -26,7 +26,6 @@ firebase.auth().onAuthStateChanged(user => {
 
     } else{
       console.log("ERROR: Not Logged In")
-      alert("ERROR: Not Logged In")
       name = "ERROR"
     }
 });
