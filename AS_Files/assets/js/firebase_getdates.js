@@ -8,16 +8,15 @@ var user = firebase.auth().currentUser;
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
+
           var div = document.createElement('div')
           var i = document.createElement('input');
           i.setAttribute('type','checkbox');
           i.setAttribute('name',childKey);
-          i.setAttribute('value',childKey);
-          var p = document.createElement('label');
-          p.setAttribute('for',childKey)
+          i.setAttribute('value',"childKey");
+
 
           div.appendChild(i);
-          div.appendChild(p);
           var cont = document.getElementById('dates');
           cont.appendChild(div);
         });
