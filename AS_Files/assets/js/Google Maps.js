@@ -19,6 +19,16 @@ var count = 0;
 // Innitializes the map
 var map;
 
+function fsearch() {
+    var checked_vals = [];
+    $('#dates input:checkbox:checked').each(function(index) {
+        checked_vals.push($(this).val());
+    });
+    console.log(checked_vals);
+    alert(checked_vals);
+}
+
+
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
@@ -29,7 +39,7 @@ firebase.auth().onAuthStateChanged(user => {
       name = "ERROR"
     }
 });
-var pullData = firebase.database().ref(name + "/05_01_2017/");
+var pullData = firebase.database().ref(name + "/" + date + "/");
 
 function initMap() {
 
