@@ -8,13 +8,17 @@ var user = firebase.auth().currentUser;
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
-          document.getElementById('dates').innerHTML = createdate(childKey);
+          createdate(childKey);
 
         });
       });
     }
 function createdate(childKey) {
-  var i = document.createElement("input");
-  i.setAttribute('type',"checkbox");
+  var f = document.getElementById('dates');
+  var i = document.createElement('input');
+  i.setAttribute('type','checkbox');
   i.setAttribute('name',childKey);
+
+  f.appendChild(i);
+  document.getElementById('dates')[0].appendChild(f);
 }
