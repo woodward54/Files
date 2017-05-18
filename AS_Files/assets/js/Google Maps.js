@@ -35,7 +35,7 @@ function initMap() {
 
     /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
      * running the .forEach() function loops through the children pushing their data onto the blipList array. */
-    pullData.once('value', function (snapshot) {
+    pullData.on('value', function (snapshot) {
         snapshot.forEach(function () {
             blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID,/* snapshot.val()["Reading " + count].time*/"00:00:00"));
             console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Temp + " " + snapshot.val()["Reading " + count].Hum + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " " );
@@ -118,7 +118,7 @@ function initMap() {
                         position: { lat: blipList[count].Lat, lng: blipList[count].Long },
                         icon: circleRed,
                         map: map,
-                        title: 'Reading ' + (count + 1)                       
+                        title: 'Reading ' + (count + 1)
                     });
                 attachMessage(marker, contentString);
             }
@@ -153,8 +153,8 @@ function initMap() {
                 attachMessage(marker, contentString);
             }
         }
-         
- 
+
+
         //  COMMENTED OUT BECAUSE IT'S ONLY NECESSARY FOR DEBUGGING/FORMATING DATA
         // Puts data onto the fire base PATH IS DEFINED IN INDEX SCRIPT OR "Push Map Data.js"
         /*for (var i = 0; i < (count+1); i++) {
@@ -163,4 +163,3 @@ function initMap() {
 
     });
 }
-           
