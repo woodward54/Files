@@ -28,6 +28,7 @@ function fsearch() {
     alert(checked_vals);
 }
 
+date = "05_01_2017";
 
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
