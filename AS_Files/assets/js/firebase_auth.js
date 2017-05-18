@@ -22,6 +22,6 @@ firebase.auth().onAuthStateChanged(function(user){
       console.log("Disp Name: " + name);
       console.log("Email: " + email);
       console.log("Uid: " + uid);
-      document.getElementById("usern").innerHTML = name;
+      document.getElementById("usern").innerHTML = name + "'s Data'";
     }
 });

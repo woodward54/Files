@@ -22,7 +22,6 @@ var map;
 
 
   var user = firebase.auth().currentUser;
-  while (user === null){
   if (user != null) {
       name = user.displayName;
       email = user.email;
@@ -32,8 +31,6 @@ var map;
     } else {
         console.log("ERROR: Not logged in");
     }
-  }
-
 
 function initMap() {
 
