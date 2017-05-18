@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged(user => {
       console.log("Loading: " + name + "'s Data");
     }
 });
-
+console.log("CHECK: " + name)
 var pullData = firebase.database().ref(name + "/05_01_2017/");
 
 function initMap() {
