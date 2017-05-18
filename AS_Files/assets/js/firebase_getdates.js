@@ -15,8 +15,9 @@ var user = firebase.auth().currentUser;
           i.setAttribute('name',childKey);
           i.setAttribute('value',childKey);
 
-          div.appendChild(i);
+
           if (i && div != null){
+            div.appendChild(i);
             var cont = document.getElementById('dates');
             cont.appendChild(div);
           }
