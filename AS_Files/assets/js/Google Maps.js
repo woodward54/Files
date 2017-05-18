@@ -22,12 +22,10 @@ var map;
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
-      email = user.email;
-      console.log("Loading: " + name + "'s Data");
+      console.log("Loading: " + user.displayName + "'s Data");
     }
 });
-console.log("CHECK: " + name)
-var pullData = firebase.database().ref(name + "/05_01_2017/");
+var pullData = firebase.database().ref(user.displayName + "/05_01_2017/");
 
 function initMap() {
 
