@@ -17,7 +17,7 @@ var user = firebase.auth().currentUser;
           div.appendChild(i);
             var cont = document.getElementById('dates');
             cont.appendChild(div);
-          }
+          });
         });
       });
     }
