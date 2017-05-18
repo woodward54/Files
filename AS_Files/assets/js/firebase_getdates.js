@@ -1,6 +1,5 @@
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
-    if (user != null){
       var name = user.displayName
       const dbRefObject = firebase.database().ref().child(name);
       dbRefObject.on('value', function(snapshot){
@@ -17,7 +16,5 @@ firebase.auth().onAuthStateChanged(user => {
           $(".dates").append(div);
         });
       });
-    }
-
   }
 });

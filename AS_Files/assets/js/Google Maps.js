@@ -24,10 +24,11 @@ firebase.auth().onAuthStateChanged(user => {
       name = user.displayName;
       email = user.email;
       console.log("Loading: " + name + "'s Data");
+      var pullData = firebase.database().ref(name + "/05_01_2017/");
     }
 });
 
-var pullData = firebase.database().ref(name + "/05_01_2017/");
+
 
 function initMap() {
 
