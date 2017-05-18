@@ -24,7 +24,5 @@ firebase.auth().onAuthStateChanged(function(user){
       console.log("Uid: " + uid);
       document.getElementById("usern").innerHTML = name + "'s Data";
     } else {
-      document.getElementById("usern").innerHTML = "Not Logged In";
-      alert("Please login on the homepage")
     }
 });
