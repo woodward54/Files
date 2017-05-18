@@ -21,15 +21,22 @@ var map;
 
 
 firebase.auth().onAuthStateChanged(function(user){
-
-function initMap() {
-
   var user = firebase.auth().currentUser;
   if (user != null) {
       name = user.displayName;
       email = user.email;
       console.log("Loading: " + name + "'s Data");
       var pullData = firebase.database().ref(name + "/05_01_2017/");
+
+    } else {
+        console.log("ERROR: Not logged in");
+    }
+
+});
+
+function initMap() {
+
+
 
       pullData.on('value', function (snapshot) {
           snapshot.forEach(function () {
@@ -163,10 +170,7 @@ function initMap() {
 
 
 
-  } else {
-      console.log("ERROR: Not logged in");
-  }
+
     /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
      * running the .forEach() function loops through the children pushing their data onto the blipList array. */
 }
-});
