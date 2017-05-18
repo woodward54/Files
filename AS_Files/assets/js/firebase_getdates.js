@@ -13,8 +13,11 @@ var user = firebase.auth().currentUser;
           i.setAttribute('type','checkbox');
           i.setAttribute('name',childKey);
           i.setAttribute('value',childKey);
-          div.appendChild(i);
+          var p = document.createElement('label');
+          p.setAttribute('for',childKey)
 
+          div.appendChild(i);
+          div.appendChild(p);
           var cont = document.getElementById('dates');
           cont.appendChild(div);
         });
