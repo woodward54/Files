@@ -1,6 +1,5 @@
-var user = firebase.auth().currentUser;
-
-
+firebase.auth().onAuthStateChanged(user => {
+  if (user != null) {
     if (user != null){
       var name = user.displayName
       const dbRefObject = firebase.database().ref().child(name);
@@ -19,3 +18,6 @@ var user = firebase.auth().currentUser;
         });
       });
     }
+
+  }
+});
