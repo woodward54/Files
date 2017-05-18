@@ -23,14 +23,14 @@ firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
       console.log("Loading: " + name + "'s Data");
-      var pullData = firebase.database().ref(name + "/05_01_2017/");
 
     } else{
       console.log("ERROR: Not Logged In")
       alert("ERROR: Not Logged In")
+      name = "ERROR"
     }
 });
-
+var pullData = firebase.database().ref(name + "/05_01_2017/");
 
 function initMap() {
 
