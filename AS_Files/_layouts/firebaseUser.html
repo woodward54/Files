@@ -24,9 +24,8 @@ layout: compress
                     <input id="btnLogin" type="button" value="Login" style="display: none;">
                     <input id="btnLogout" type="button" value="Logout">
                 </div>
-                <div class=id="dates" name="dates">
+                <div class="dates">
                   Dates
-                  <script src="{{ site.url }}/assets/js/firebase_getdates.js"></script>
                 </div>
                 <hr class="hr-line">
                 <div class="map">
@@ -38,7 +37,7 @@ layout: compress
         </div>
     </header>
     {% include scripts.html %}
-
+    <script src="{{ site.url }}/assets/js/firebase_getdates.js"></script>
     <script src="{{ site.url }}/assets/js/Google Maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
      async defer></script>

@@ -15,7 +15,7 @@ var user = firebase.auth().currentUser;
           i.value = childKey;
 
           div.appendChild(i);
-          $("body").append(div);
+          $(".dates").append(div);
         });
       });
     }
