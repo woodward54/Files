@@ -25,7 +25,7 @@ function initMap() {
 
   var user = firebase.auth().currentUser;
 
-while (user != null) {
+while (user === null) {
 
   if (user != null) {
       name = user.displayName;
