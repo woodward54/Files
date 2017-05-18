@@ -8,12 +8,12 @@ layout: compress
 <!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
 <head>
     {% include head.html %}
-</head>
-<body>
-    {% include nav.html %}
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script src="{{ site.url }}/assets/js/firebase_config.js"></script>
     <script src="{{ site.url }}/assets/js/firebase_auth.js"></script>
+</head>
+<body>
+    {% include nav.html %}
     <!--<script src="{{ site.url }}/assets/js/Push Map Data.js"></script>-->
     <!-- Header -->
     <header class="header" role="banner">
@@ -40,6 +40,6 @@ layout: compress
     <script src="{{ site.url }}/assets/js/firebase_getdates.js"></script>
     <script src="{{ site.url }}/assets/js/Google Maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
-     defer></script>
+     async defer></script>
 </body>
 </html>
