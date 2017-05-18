@@ -8,7 +8,7 @@ var user = firebase.auth().currentUser;
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
-          var div = doccument.createElement('div')
+          var div = document.createElement('div')
           var i = document.createElement('input');
           i.setAttribute('type','checkbox');
           i.setAttribute('name',childKey);
