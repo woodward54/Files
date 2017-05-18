@@ -12,12 +12,12 @@ var user = firebase.auth().currentUser;
           var div = document.createElement("div")
           var i = document.createElement("input");
           i.type = "checkbox";
-          i.value = childKey;
+          i.value = "childKey";
 
-          div.appendChild(i);
+            div.appendChild(i);
             var cont = document.getElementById('dates');
             cont.appendChild(div);
-          });
+          }
         });
       });
     }
