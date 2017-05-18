@@ -24,6 +24,9 @@ var map;
 function initMap() {
 
   var user = firebase.auth().currentUser;
+
+while (user != null) {
+
   if (user != null) {
       name = user.displayName;
       email = user.email;
@@ -165,6 +168,7 @@ function initMap() {
   } else {
       console.log("ERROR: Not logged in");
   }
+}
 
     /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
      * running the .forEach() function loops through the children pushing their data onto the blipList array. */
