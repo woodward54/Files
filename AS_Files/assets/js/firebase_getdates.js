@@ -13,7 +13,7 @@ var user = firebase.auth().currentUser;
           var i = document.createElement('input');
           i.setAttribute('type','checkbox');
           i.setAttribute('name',childKey);
-          i.setAttribute('value',"childKey");
+          i.setAttribute('value',childKey);
 
           div.appendChild(i);
           var cont = document.getElementById('dates');
