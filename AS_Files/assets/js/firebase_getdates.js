@@ -21,8 +21,10 @@ firebase.auth().onAuthStateChanged(user => {
           i.type = "checkbox";
           i.value = childKey;
           var text = document.createTextNode(" " + childKey);
+          var br = document.createElement('br';)
           document.getElementById('dates').appendChild(i);
           document.getElementById('dates').appendChild(text);
+          document.getElementById('dates').appendChild(br);
         });
       });
   }
