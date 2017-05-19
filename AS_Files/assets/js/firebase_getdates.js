@@ -46,8 +46,8 @@ function makedate(){
       else {d = getdd;}
     if (getmm <= 9){m = "0" + getmm;}
       else {m = getmm;}
-
-  var dt = d + "_" + m + "_" + y;
+m+1;
+  var dt = m + "_" + d + "_" + y;
   console.log("The Date is: " + dt);
 }
 makedate();
