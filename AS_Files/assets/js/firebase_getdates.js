@@ -2,7 +2,7 @@ firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       var name = user.displayName
       const dbRefObject = firebase.database().ref().child(name);
-      dbRefObject.on('value', function(snapshot){
+      dbRefObject.once('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
@@ -52,6 +52,7 @@ m+1;
 }
 makedate();
 
+date =
 window.setInterval(function(){
   fsearch();
 },500);
