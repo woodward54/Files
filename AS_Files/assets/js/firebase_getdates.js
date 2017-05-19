@@ -7,19 +7,16 @@ firebase.auth().onAuthStateChanged(user => {
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
 
-          //var div = document.createElement("div");
+          var div = document.createElement("div");
           var i = document.createElement("input");
-
+          var text = document.createTextNode(" " + childKey);
           i.type = "checkbox";
           i.value = childKey;
 
-          document.getElementById("dates").appendChild(i);
-          var div = document.getElementById("dates");
-          var text = document.createTextNode(" " + childKey);
-          var br = document.createElement('br');
+
+          div.appendChild(i);
           div.appendChild(text);
-          div.appendChild(br);
-          //$(".dates").append(div);
+          $(".dates").append(div);
         });
       });
   }
