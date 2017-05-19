@@ -36,16 +36,16 @@ function makedate(){
   var d;
   var m;
   var getd = new Date();
-  datdd = getd.getDate();
+  gatdd = getd.getDate();
   var getm = new Date();
   getmm = getm.getMonth();
   var gety = new Date();
   y = gety.getFullYear();
 
-    if (getdd <= 9){d = "0" + detdd;}
+    if (getdd <= 9){d = "0" + getdd;}
       else {d = getdd;}
     if (getmm <= 9){m = "0" + getmm;}
-      else {getdd = getmm;}
+      else {m = getmm;}
 
   var dt = d + "_" + m + "_" + y;
   console.log("The Date is: " + dt);
