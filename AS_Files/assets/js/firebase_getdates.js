@@ -35,13 +35,18 @@ firebase.auth().onAuthStateChanged(user => {
 function makedate(){
   var d;
   var m;
-  var getd = getDate();
-  var getm = getMonth();
-    if (getd <= 9){d = "0" + getDate();}
-      else {d = getDate();}
-    if (getMonth() <= 9){m = "0" + getMonth();}
-      else {m = getMonth();}
-  var y = getFullYear();
+  var getd = new Date();
+  datdd = getd.getDate();
+  var getm = new Date();
+  getmm = getm.getMonth();
+  var gety = new Date();
+  y = gety.getFullYear();
+
+    if (getdd <= 9){d = "0" + detdd;}
+      else {d = getdd;}
+    if (getmm <= 9){m = "0" + getmm;}
+      else {getdd = getmm;}
+
   var dt = d + "_" + m + "_" + y;
   console.log("The Date is: " + dt);
 }
