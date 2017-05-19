@@ -36,7 +36,7 @@ function makedate(){
   var d;
   var m;
   var getd = new Date();
-  gatdd = getd.getDate();
+  getdd = getd.getDate();
   var getm = new Date();
   getmm = getm.getMonth();
   var gety = new Date();
