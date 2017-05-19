@@ -30,7 +30,9 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-setInterval(fsearch(),500);
+window.setInterval(function(){
+  fsearch();
+},500);
 
 function fsearch() {
     var checked_vals = [];
