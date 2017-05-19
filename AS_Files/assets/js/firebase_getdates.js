@@ -17,13 +17,12 @@ firebase.auth().onAuthStateChanged(user => {
           div.appendChild(text);
           $(".dates").append(div);*/
 
-          var node = document.getElementById('dates').lastChild;
           var i = document.createElement("input");
           i.type = "checkbox";
           i.value = childKey;
           var text = document.createTextNode(" " + childKey);
-          node.appendChild(i);
-          node.appendChild(text);
+          document.getElementById('dates').appendChild(i);
+          document.getElementById('dates').appendChild(text);
         });
       });
   }
