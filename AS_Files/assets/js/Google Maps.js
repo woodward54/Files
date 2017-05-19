@@ -25,7 +25,6 @@ function fsearch() {
         checked_vals.push($(this).val());
     });
     console.log(checked_vals);
-    alert(checked_vals);
 }
 
 date = "05_01_2017";
