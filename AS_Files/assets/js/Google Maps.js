@@ -19,17 +19,6 @@ var count = 0;
 // Innitializes the map
 var map;
 
-setInterval(fsearch(),500);
-
-function fsearch() {
-    var checked_vals = [];
-    $('#dates input:checkbox:checked').each(function(index) {
-        checked_vals.push($(this).val());
-    });
-    console.log(checked_vals);
-}
-
-date = "05_01_2017";
 
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
