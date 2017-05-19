@@ -7,7 +7,8 @@ firebase.auth().onAuthStateChanged(user => {
           var childKey = childSnapshot.key;
           console.log("Dates Loaded: " + childKey);
 
-          var div = document.createElement("div");
+          //var div = document.createElement("div");
+          var div = document.getElementById('dates')
           var i = document.createElement("input");
           var text = document.createTextNode(" " + childKey);
           i.type = "checkbox";
