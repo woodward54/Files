@@ -62,13 +62,10 @@ function fsearch() {
     $('#dates input:checkbox:checked').each(function(index) {
         checked_vals.push($(this).val());
     });
-    console.log(checked_vals);
+    //console.log(checked_vals);
     if (checked_vals.length === 1){
       if (checked_vals === "Realtime"){date = dt;}
       else {date = checked_vals;}
-    }
-     else if (checked_vals.length > 1) {
-      console.log("Feature not implmented yet");
     }
 
 
