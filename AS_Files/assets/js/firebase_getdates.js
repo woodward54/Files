@@ -41,7 +41,7 @@ function makedate(){
       else {m = getMonth();}
   var y = getFullYear();
   var dt = d + "_" + m + "_" + y;
-  console.log("The Date is: " dt);
+  console.log("The Date is: " + dt);
 }
 
 
@@ -51,6 +51,7 @@ window.setInterval(function(){
 
 function fsearch() {
     var checked_vals = [];
+    var date;
     $('#dates input:checkbox:checked').each(function(index) {
         checked_vals.push($(this).val());
     });
