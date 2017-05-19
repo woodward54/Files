@@ -23,7 +23,7 @@ setInterval(fsearch(),500);
 
 function fsearch() {
     var checked_vals = [];
-    $('#dates input:checkbox:checked').each(function(index) {
+    $('#dates div:input:checkbox:checked').each(function(index) {
         checked_vals.push($(this).val());
     });
     console.log(checked_vals);
