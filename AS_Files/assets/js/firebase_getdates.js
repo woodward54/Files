@@ -67,8 +67,8 @@ function fsearch() {
       if (checked_vals === "Realtime"){date = dt;}
       else {date = checked_vals;}
     }
-    else {
-      console.log("Feature not implmented yet")
+     else if (checked_vals.length > 1) {
+      console.log("Feature not implmented yet");
     }
 
 
