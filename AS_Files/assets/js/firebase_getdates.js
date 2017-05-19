@@ -30,12 +30,14 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-makedate();
+
 
 function makedate(){
   var d;
   var m;
-    if (getDate() <= 9){d = "0" + getDate();}
+  var getd = getDate();
+  var getm = getMonth();
+    if (getd <= 9){d = "0" + getDate();}
       else {d = getDate();}
     if (getMonth() <= 9){m = "0" + getMonth();}
       else {m = getMonth();}
@@ -43,7 +45,7 @@ function makedate(){
   var dt = d + "_" + m + "_" + y;
   console.log("The Date is: " + dt);
 }
-
+makedate();
 
 window.setInterval(function(){
   fsearch();
