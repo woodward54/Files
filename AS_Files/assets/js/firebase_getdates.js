@@ -30,6 +30,21 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
+makedate();
+
+function makedate(){
+  var d;
+  var m;
+    if (getDate() <= 9){d = "0" + getDate();}
+      else {d = getDate();}
+    if (getMonth() <= 9){m = "0" + getMonth();}
+      else {m = getMonth();}
+  var y = getFullYear();
+  var dt = d + "_" + m + "_" + y;
+  console.log("The Date is: " dt);
+}
+
+
 window.setInterval(function(){
   fsearch();
 },500);
@@ -40,6 +55,14 @@ function fsearch() {
         checked_vals.push($(this).val());
     });
     console.log(checked_vals);
-}
+    if (checked_vals.length === 1){
+      if (checked_vals === "Realtime"){date = dt;}
+      else {date = checked_vals;}
+    }
+    else {
+      console.log("Feature not implmented yet")
+    }
 
-date = "05_01_2017";
+
+
+}
