@@ -52,7 +52,7 @@ m+1;
 }
 makedate();
 
-date =
+
 window.setInterval(function(){
   fsearch();
 },500);
