@@ -52,7 +52,7 @@ m+1;
 }
 makedate();
 
-
+date = "05_19_2017"
 window.setInterval(function(){
   fsearch();
 },500);
@@ -68,7 +68,5 @@ function fsearch() {
       if (checked_vals === "Realtime"){date = dt;}
       else {date = checked_vals;}
     }
-
-
 
 }
