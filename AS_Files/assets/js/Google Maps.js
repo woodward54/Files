@@ -26,8 +26,8 @@ var pullCount = 0;
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
       name = user.displayName;
-      console.log("Loading: " + name + "'s Data");
-      fsearch();
+      date1 = localStorage.date;
+      console.log("Loading: " + name + "'s Data for Date: " + date1);
     } else{
       console.log("ERROR: Not Logged In")
       name = "ERROR"
@@ -35,7 +35,8 @@ firebase.auth().onAuthStateChanged(user => {
 });
 
 
-var pullData = firebase.database().ref(name + "/" + date + "/");
+
+var pullData = firebase.database().ref(name + "/" + date1 + "/");
 
 
 function initMap() {
@@ -78,7 +79,7 @@ function initMap() {
                 count++;
             }
             else {*/
-                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " +count].CO2, snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time));
+                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].CO2, snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time));
                 console.log(snapshot.val()["Reading " + count].Meth, /*snapshot.val()[count].CO2*/ "No Read" , snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time);
 
             //console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");

@@ -52,7 +52,7 @@ m+1;
 }
 makedate();
 
-date = "05_19_2017"
+
 window.setInterval(function(){
   fsearch();
 },500);
@@ -65,8 +65,16 @@ function fsearch() {
     });
     //console.log(checked_vals);
     if (checked_vals.length === 1){
-      if (checked_vals === "Realtime"){date = dt;}
-      else {date = checked_vals;}
+      if (checked_vals === "Realtime"){
+        date = dt;
+        localStorage.date = date;
+        window.open("/map","_self");
+      }
+      else {
+        date = checked_vals;
+        localStorage.date = date;
+        window.open("/map","_self");
+      }
     }
 
 }
