@@ -50,7 +50,6 @@ m+1;
   var dt = m + "_" + d + "_" + y;
   console.log("The Date is: " + dt);
 }
-makedate();
 
 
 window.setInterval(function(){
@@ -66,6 +65,7 @@ function fsearch() {
     //console.log(checked_vals);
     if (checked_vals.length === 1){
       if (checked_vals === "Realtime"){
+        makedate();
         date = dt;
         localStorage.date = date;
         window.open("/map","_self");
