@@ -114,10 +114,6 @@ function initMap()
         });
 
         // Function that assigns the same info window to each marker node, this allows there to only be one info window on the screen at a time
-       setTimeout(function ()
-       {
-            map.setCenter({lat: 34.321663, lng: -92.021484});
-       },10000);
 
 
         //Creates the colored marker icons
