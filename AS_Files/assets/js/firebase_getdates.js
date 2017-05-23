@@ -63,18 +63,18 @@ function fsearch() {
         checked_vals.push($(this).val());
     });
     //console.log(checked_vals);
-    if (checked_vals.length === 1){
-      if (checked_vals === "realtime"){
+    //if (checked_vals.length === 1){
+      if (checked_vals === "Realtime"){
         makedate();
+        alert("Realtime Working");
         localStorage.date = dt;
         window.open("/map","_self");
       }
       else {
         date = checked_vals;
-
         localStorage.date = date;
         window.open("/map","_self");
       }
-    }
+    //}
 
 }
