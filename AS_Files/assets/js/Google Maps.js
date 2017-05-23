@@ -40,6 +40,8 @@ var pullCount;
 
 var lastID;
 
+var pullData;
+
 function initMap()
 {
         /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
