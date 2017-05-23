@@ -22,6 +22,8 @@ var map;
 
 var pullCount = 0;
 
+var date1;
+var name;
 
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
