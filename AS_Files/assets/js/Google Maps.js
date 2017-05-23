@@ -13,7 +13,6 @@ if (user != null) {
     console.log("ERROR: Not logged in");
 }*/
 
-console.log("Working")
 var pullData = firebase.database().ref(name + "/" + localStorage.date + "/");
 
 // Class constructor for mapBlip
