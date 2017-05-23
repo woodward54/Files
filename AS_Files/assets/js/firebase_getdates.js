@@ -63,7 +63,7 @@ function fsearch() {
         checked_vals.push($(this).val());
     });
     //console.log(checked_vals);
-    //if (checked_vals.length === 1){
+    if (checked_vals.length === 1){
       if (checked_vals === "Realtime"){
         makedate();
         alert("Realtime Working");
@@ -75,6 +75,6 @@ function fsearch() {
         localStorage.date = date;
         window.open("/map","_self");
       }
-    //}
+    }
 
 }
