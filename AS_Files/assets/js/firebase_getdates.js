@@ -64,13 +64,14 @@ function fsearch() {
     });
     //console.log(checked_vals);
     if (checked_vals.length === 1){
-      if (checked_vals === "Realtime"){
+      if (checked_vals === "realtime"){
         makedate();
         localStorage.date = dt;
         window.open("/map","_self");
       }
       else {
         date = checked_vals;
+
         localStorage.date = date;
         window.open("/map","_self");
       }
