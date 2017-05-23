@@ -13,6 +13,8 @@ if (user != null) {
     console.log("ERROR: Not logged in");
 }*/
 
+console.log("Working")
+var pullData = firebase.database().ref(name + "/" + localStorage.date + "/");
 
 // Class constructor for mapBlip
 function mapBlip(inMeth, inCO2, inTemp, inHum, inLat, inLong, inID, inTime, inPlotted) {
@@ -40,7 +42,6 @@ var pullCount;
 
 var lastID;
 
-var pullData;
 
 function initMap()
 {
