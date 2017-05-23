@@ -66,8 +66,7 @@ function fsearch() {
     if (checked_vals.length === 1){
       if (checked_vals === "Realtime"){
         makedate();
-        date = dt;
-        localStorage.date = date;
+        localStorage.date = dt;
         window.open("/map","_self");
       }
       else {
