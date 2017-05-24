@@ -1,0 +1,44 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+    {% include head.html %}
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script src="{{ site.url }}/assets/js/firebase_config.js"></script>
+    <script src="{{ site.url }}/assets/js/firebase_auth.js"></script>
+
+</head>
+<body>
+    {% include nav.html %}
+    <!--<script src="{{ site.url }}/assets/js/Push Map Data.js"></script>-->
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="wrapper animated fadeIn">
+            <div class="content">
+                <div class="post-title">
+                    <h1><var id="usern"></var></h1>
+                    <input id="btnLogin" type="button" value="Login" style="display: none;">
+                    <input id="btnLogout" type="button" value="Logout">
+                </div>
+                <hr class="hr-line">
+                <div class="map">
+                  <div class="Rect">
+                    <div id="map" style="width:100%;height:400px;"></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% include scripts.html %}
+    <script src="{{ site.url }}/assets/js/GoogleMaps_Login.js"></script>
+    <script src="{{ site.url }}/assets/js/Google Maps.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUOVglns4ocELjLQsPgJEHtycA6sdt8g&callback=initMap"
+    defer></script>
+    <!--<script src="{{ site.url }}/assets/js/refresh.js"></script>-->
+</body>
+</html>
