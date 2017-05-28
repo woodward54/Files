@@ -1,21 +1,23 @@
 
-// Variable with the database path
 
-// The pullData definition for the actual website
-/*
-var user = firebase.auth().currentUser;
-if (user != null) {
-    name = user.displayName;
-    email = user.email;
-    console.log("Loading: " + name + "'s Data");
-    var pullData = firebase.database().ref(name + "/05_01_2017/");
-} else {
-    console.log("ERROR: Not logged in");
-}*/
-
+// pullData is used with the name of the current user (name var defined in GoogleMaps_login), and the selected date that the user has selected to view on the previous page.
 var pullData = firebase.database().ref(name + "/" + localStorage.date + "/");
 
-// Class constructor for mapBlip
+/*
+    Description:            Class constructor for mapBlip
+    Parameters:             "inMeth": integer var for Methane, measured in ppm
+                            "inCO2": integer var for CO2, measured in ppm
+                            "inTemp": integer var for temperature, measured in Celsius
+                            "inHum": integer var for humidity , measured in ?????
+                            "inLat": floating point var for latitude
+                            "inLong": floating point var for longitude
+                            "inID": integer var that represents the blip ID  that is intended to be assigned sequentially based closely on index
+                            "inTime": string var that represemts time in the format "hh:mm:ss"
+                            "inPlotted": boolean var that holds whether the blip data has been turned into a corresponding marker. true:plotted false:not plotted
+    Note:                   (the ID is 1 more than the index to avoid having a 0 ID). It is very important for the current build
+                            that the ID's are asssigned in such a way that the next data point (for "Reading 81" the next data point would be "Reading 82")
+                            always has a higher ID value, as this is what the live updates works off of.
+*/
 function mapBlip(inMeth, inCO2, inTemp, inHum, inLat, inLong, inID, inTime, inPlotted) {
     this.Meth = inMeth;
     this.CO2 = inCO2;
@@ -28,77 +30,66 @@ function mapBlip(inMeth, inCO2, inTemp, inHum, inLat, inLong, inID, inTime, inPl
     this.Plotted = inPlotted;
 }
 
-// Arrays for storing and transferring mapBlip's
-var tempBlipList = [];
-var oldBlipList = [];
-var blipList = [];
-// Iteration variable
-var count;
+
 // Innitializes the map
 var map;
-// Amount of times that
-var pullCount;
 
-var lastID;
 
 
 function initMap()
 {
-        /* The .once() function is from fire base and essentially reads all of the child data in the node selected. The child data is stored inside snapshot.val()
-         * running the .forEach() function loops through the children pushing their data onto the blipList array. */
-        pullData.once('value', function (snapshot) {
-        var limit = blipList.length;
-        for (var i = 0; i < limit; i++)
+
+    // Array for storing mapBlip's
+    var blipList = [];
+    var count;
+    // Used to keep track of the last ID originally loaded from firebase
+    var lastID;
+
+    /* The .once() method is from fire base and essentially reads all of the child data in the path selected. The child data is stored inside snapshot.val()
+     * running the .forEach() function loops through the children pushing their data onto the blipList array. */
+    pullData.once('value', function (snapshot) {
+    count = 0;
+    snapshot.forEach(function () {
+
+        // Cases have been added in to handle missing bits of data by filling in with a "No Read" tag. The section has been commented out to avoid issues with testing more important features
+        /* // CASE: TEMP, HUM, & TIME UNDEFINED (Hum is implicitely checked, as in the current data set if there was a Temp, there was also a corresponding Hum
+        if (typeof snapshot.val()["Reading " + count].Temp == "undefined" && snapshot.val()["Reading " + count].Time === null)
         {
-            blipList.pop();
+                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, "No Read" , "No Read", snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID,"No Read"));
+                console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " " );
+                count++;
         }
-        count = 0;
-        snapshot.forEach(function () {
+        // CASE: TIME UNDEFINED
+        else if (snapshot.val()["Reading " + count].Time === null)
+        {
+            blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, "No Read"));
+            console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
+            count++;
+        }
+        // CASE: METH UNDEFINED
+        else if (snapshot.val()["Reading " + count].Meth === null)
+        {
+            blipList.push(new mapBlip("No Read", snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " + count].Time));
+            console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
+            count++;
+        }
+        else
+        {*/
+            blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " +count].CO2, snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time, false));
+            console.log(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].CO2 , snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time);
+            lastID = snapshot.val()["Reading " + count].ID
+        //console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
+            count++;
 
-            // Cases have been added in to handle missing bits of data by filling in with a "No Read" tag. The section has been commented out to avoid issues with testing more important features
-            /* // CASE: TEMP, HUM, & TIME UNDEFINED (Hum is implicitely checked, as in the current data set if there was a Temp, there was also a corresponding Hum
-            if (snapshot.val()["Reading " + count].Temp === null && snapshot.val()["Reading " + count].Time === null)
-            {
-                    blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, "No Read" , "No Read", snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID,"No Read"));
-                    console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " " );
-                    count++;
-            }
-            // CASE: TIME UNDEFINED
-            else if (snapshot.val()["Reading " + count].Time === null)
-            {
-                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, "No Read"));
-                console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
-                count++;
-            }
-            // CASE: METH UNDEFINED
-            else if (snapshot.val()["Reading " + count].Meth === null)
-            {
-                blipList.push(new mapBlip("No Read", snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " + count].Time));
-                console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
-                count++;
-            }
-            else
-            {*/
-                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " +count].CO2, snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time, false));
-                console.log(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].CO2 , snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time);
-                lastID = snapshot.val()["Reading " + count].ID
-            //console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
-                count++;
+                //This if statement was to exclude some bunk data points from 05_18_2017, keeping around so that we know where the problems were(additionally 1-9 were skipped
 
-                    //This if statement was to exclude some bunk data points from 05_18_2017, keeping around so that we know where the problems were(additionally 1-9 were skipped
-
-            /* if (count == 33 || count == 69 || count == 83 || count == 98 || count == 113 || count==128 || count == 143 || count == 363 || count == 377)
-                {
-                    count++;
-                }*/
-            //}
+        /* if (count == 33 || count == 69 || count == 83 || count == 98 || count == 113 || count==128 || count == 143 || count == 363 || count == 377)
+            {
+                count++;
+            }*/
+        //}
         });
-        console.log(lastID);
-        pullCount++;
-        if (pullCount != 1)
-        {
-           // refreshMarkers(markerList);
-        }
+
 
        // only for reading from the broken data set
        // count = count-18;
@@ -154,12 +145,23 @@ function initMap()
         var contentString;
         var markerList = [];
 
-        //This for loop will take a count of our individual data points, and plot their info to them in an info window, PLEASE don't mess with, it's delicate
+
+
+        /*
+            Description:
+            Parameters:             "marker"  Marker object (from google maps API)
+                                    "contentString" string var for info window
+            Note:                   The infowindow decleration and definition is outside of the function, so that every marker is assigned the same info window. This limits the system
+                                    to only have one info window at a time, which is more aesthetically pleasing.
+            Touched:                ??/??/???? -JD
+        */
         function setBlips(blipList)
         {
+            // This for loop will take a count of our individual data points, and plot their info to them in an info window
             for (j = 0; j < blipList.length; j++) {
                 if (blipList[j].Plotted === false) {
-                    // String of text for the click window
+
+                    // String of text for the click wiindow
                     contentString = '<div id="content">' +
                         '<div id="siteNotice">' +
                         '</div>' +
@@ -222,30 +224,12 @@ function initMap()
             }
         }
         setBlips(blipList);
-        /*
-        function refreshMarkers()
-        {
-
-            setTimeout(function ()
-            {
-                for (var i = 0; i < markerList.length; i++)
-                {
-                    markerList[i].setMap(null);
-                }
-                console.log("REFRESH")
-                setBlips(blipList);
-                refreshMarkers();
-            }, 2500);
-
-        }
-        refreshMarkers(markerList);
-        */
         console.log(lastID);
         pullData.orderByChild("ID").startAt(lastID+1).on("child_added", function (snapshot)
         {
 
-                blipList.push(new mapBlip(snapshot.val()/*["Reading " + count]*/.Meth, snapshot.val()/*["Reading " + count]*/.CO2, snapshot.val()/*["Reading " + count]*/.Temp, snapshot.val()/*["Reading " + count]*/.Hum, snapshot.val()/*["Reading " + count]*/.Lat, snapshot.val()/*["Reading " + count]*/.Long, snapshot.val()/*["Reading " + count]*/.ID, snapshot.val()/*["Reading " + count]*/.Time, false));
-                console.log(snapshot.val()/*["Reading " + count]*/.Meth, snapshot.val().CO2, snapshot.val()/*["Reading " + count]*/.Temp, snapshot.val()/*["Reading " + count]*/.Hum, snapshot.val()/*["Reading " + count]*/.Lat, snapshot.val()/*["Reading " + count]*/.Long, snapshot.val()/*["Reading " + count]*/.ID, snapshot.val()/*["Reading " + count]*/.Time);
+                blipList.push(new mapBlip(snapshot.val().Meth, snapshot.val().CO2, snapshot.val().Temp, snapshot.val().Hum, snapshot.val().Lat, snapshot.val().Long, snapshot.val().ID, snapshot.val().Time, false));
+                console.log(snapshot.val().Meth, snapshot.val().CO2, snapshot.val().Temp, snapshot.val().Hum, snapshot.val().Lat, snapshot.val().Long, snapshot.val().ID, snapshot.val().Time);
                 console.log(snapshot.val());
                 setBlips(blipList);
         });
@@ -253,7 +237,14 @@ function initMap()
     });
 
 
-
+    /*
+        Description:            Takes in a marker and adds a listner that responds to clicks with the opening of an info window
+        Parameters:             "marker"  Marker object (from google maps API)
+                                "contentString" string var for info window
+        Note:                   The infowindow decleration and definition is outside of the function, so that every marker is assigned the same info window. This limits the system
+                                to only have one info window at a time, which is more aesthetically pleasing.
+        Touched:                ??/??/???? -JD
+    */
     var infowindow = new google.maps.InfoWindow();
     function attachMessage(marker, contentString) {
 
@@ -272,21 +263,3 @@ function initMap()
 
 
 }
-
-
-
-//updateMap();
-/*
-function addMarker() {
-    setTimeout(function () {
-        for (var i = 0; i < markerList.length; i++) {
-            markerList[i].setMap(null);
-        }
-
-        markerList = [];
-        console.log("REFRESH")
-        setBlips(blipList);
-       refreshMarkers();
-    }, 60500);
-
-}*/

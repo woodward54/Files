@@ -1,5 +1,5 @@
 firebase.auth().onAuthStateChanged(user => {
-  if (user != null) {
+    if (user != null) {
       var name = user.displayName
       const dbRefObject = firebase.database().ref().child(name);
       dbRefObject.once('value', function(snapshot){
@@ -66,7 +66,8 @@ function fsearch() {
     if (checked_vals.length === 1){
         date = checked_vals;
         localStorage.date = date;
-        window.open("/map","_self");
+        window.location.href = "http://aeriumsolution.com/map";
+        /*window.open("/map","_self");*/
     }
 
 }
