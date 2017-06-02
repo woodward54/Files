@@ -15,7 +15,8 @@ const promise = auth.signInWithEmailAndPassword(email,pass);
 promise.catch(e => console.log(e.message));
 firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser){
-        window.open("/firebaseUser","_self");
+        window.location.href = "http://aeriumsolution.com/dates";
+        /*window.open("/dates","_self");*/
     } else {
       alert("Wrong username or password!");
     }
@@ -24,5 +25,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
-  window.open("http://aeriumsolution.com/","_self");
+  window.location.href = "http://aeriumsolution.com/";
+  /*window.open("http://aeriumsolution.com/","_self");*/
 });

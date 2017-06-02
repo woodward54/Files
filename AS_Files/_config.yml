@@ -64,9 +64,9 @@ facebook:           Aerium-Solutions-1327606430666003/
 
 # Gems
 gems:
-  - jekyll-mentions
+#  - jekyll-mentions
   - jekyll-feed
-  - jekyll-sitemap
+#  - jekyll-sitemap
   - jekyll-gist
 
 jekyll-mentions:
