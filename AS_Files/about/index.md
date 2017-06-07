@@ -27,6 +27,6 @@ The data is mapped on your secure account in real-time so you will always have a
 * David Woodward
 
 {% capture image %}
-   https://github.com/woodward54/Files/AS_Files/assets/img/aerium1.png
+  https://github.com/woodward54/Files/blob/master/AS_Files/assets/img/aerium1.png
 {% endcapture %}
 
