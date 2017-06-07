@@ -20,13 +20,13 @@ Because of our design, we collect a large amount of information simultaneously. 
 The data is mapped on your secure account in real-time so you will always have access.
 
 ## Meet the Team
-* David Woodward
+* Michael Dwinnel
+* Jeremiah Dickens
 * Morgan Novak
 * Scott Visser
-* Jeremiah Dickens
-* Michael Dwinnel
+* David Woodward
 
-{% capture images %}
-   "Files/AS_Fo;es/assets/img/aerium1.png"
+{% capture image %}
+   https://github.com/woodward54/Files/AS_Fo;es/assets/img/aerium1.png
 {% endcapture %}
 
