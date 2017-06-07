@@ -4,7 +4,7 @@ bio:                'UAV Data Collection and Reporting'
 description:        "UAV data collection, reporting, and environmental monitoring service"
 reading_time:       true
 words_per_minute:   200
-logo:               '/assets/img/logo1.png'
+logo:               '/favicon.png'
 #background:         'http://alyeska-pipeline.com/assets/uploads/pagestructure/NewsCenter_MediaResources_UploadArea_Entries/634957562573372722_PipelineTripSept2009_102.JPG'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
