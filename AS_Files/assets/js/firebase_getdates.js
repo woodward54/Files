@@ -66,7 +66,7 @@ function fsearch() {
     if (checked_vals.length === 1){
         date = checked_vals;
         localStorage.date = date;
-        window.location.href = "http://aeriumsolution.com/map";
+        window.location.href = "http://aeriumsolutions.com/map";
         /*window.open("/map","_self");*/
     }
 
