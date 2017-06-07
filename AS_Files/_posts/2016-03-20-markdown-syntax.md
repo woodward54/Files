@@ -2,10 +2,8 @@
 layout: post
 title:  "Earthack 2017- CO2 Drone"
 date:   2017-6-7
-excerpt: "Started from the bottom now we are here!"
-tag:
-- jekyll
-comments: true
+excerpt: "how Aerium Solutions came to be..."
+comments: false
 ---
 
 ## Earthack 2017
