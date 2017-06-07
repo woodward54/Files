@@ -26,7 +26,7 @@ The data is mapped on your secure account in real-time so you will always have a
 * Scott Visser
 * David Woodward
 
-{% capture image %}
+{% capture images %}
   https://github.com/woodward54/Files/blob/master/AS_Files/assets/img/aerium1.png
 {% endcapture %}
 
