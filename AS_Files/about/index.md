@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-tags: [about, Jekyll, theme, moon]
+title: About Aerium Solutions
+tags: [about, Jekyll]
 date: 2017-6-7
 comments: false
 ---
