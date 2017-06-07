@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         window.location.href = "http://aeriumsolution.com/dates";
         /*window.open("/dates","_self");*/
     } else {
-      alert("Wrong username or password!");
+     // alert("Wrong username or password!");
     }
   });
 });
