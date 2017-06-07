@@ -20,7 +20,7 @@ Because of our design, we collect a large amount of information simultaneously. 
 The data is mapped on your secure account in real-time so you will always have access.
 
 ## Meet the Team
-* Michael Dwinnel
+* Michael Dwinnell
 * Jeremiah Dickens
 * Morgan Novak
 * Scott Visser
