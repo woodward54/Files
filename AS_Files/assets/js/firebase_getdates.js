@@ -115,7 +115,7 @@ function fsearch() {
 
         //flight = checked_vals;
         localStorage.date = date;
-        localStorage.flight = flight;
+        //localStorage.flight = flight;
         window.location.href = "http://aeriumsolutions.com/map";
         /*window.open("/map","_self");*/
     }
