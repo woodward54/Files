@@ -4,6 +4,7 @@ function() {
     var middleground="http://aeriumsolution.com/";
     if(currenturl == middleground) {window.location.href= endurl;}
     else {}
+    
 };
 
 
