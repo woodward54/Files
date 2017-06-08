@@ -6,8 +6,7 @@ date: 2017-6-7
 comments: false
 ---
     
-<center> ## You call, we fly! </center>
-
+<center> You call, we fly! </center>
 <center>Aerium Solutions is a team dedicated to UAV data collection and reporting.</center>
 
 
