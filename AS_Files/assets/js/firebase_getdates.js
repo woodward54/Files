@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(user => {
           var childKey = childSnapshot.key;
 
 
-          const dbRefObject2 = firebase.database().ref().child(name).childKey;
+          const dbRefObject2 = firebase.database().ref().child(name).child(childKey);
           dbRefObject2.once('value', function(snapshot){
             snapshot.forEach(function(childSnapshot){
               var flight = childSnapshot.key;
