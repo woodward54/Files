@@ -53,9 +53,10 @@ firebase.auth().onAuthStateChanged(user => {
           	var text = document.createTextNode(" " + (i+1));
           	var br = document.createElement('br');
           	//document.getElementById('dates').appendChild(para);
-          	document.getElementById('dates').appendChild(indent);
+          	//document.getElementById('dates').appendChild(indent);
           	document.getElementById('dates').appendChild(p);
           	document.getElementById('dates').appendChild(text);
+            document.getElementById('dates').appendChild(br);
         }
 
 	 //document.getElementById('dates').appendChild(br);
