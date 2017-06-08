@@ -42,7 +42,7 @@ firebase.auth().onAuthStateChanged(user => {
 	  for(var i =0; i < childKey.length; i++)
 	  {
             var flightnum = "Flight " + (i+1);
-            system.val()[childKey].flightnum;
+            snapshot.val()[childKey].flightnum;
           	console.log("Flight Number: " + (i+1));
 
          	  //var para = document.createElement("P");
