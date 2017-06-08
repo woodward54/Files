@@ -42,8 +42,9 @@ firebase.auth().onAuthStateChanged(user => {
 	  for(var i =0; i < childKey.length; i++)
 	  {
             var flightnum = "Flight " + (i+1);
-            snapshot.val()[childKey].flightnum;
+            var what = snapshot.val()[childKey].flightnum;
           	console.log("Flight Number: " + (i+1));
+            console.log("What: " + what);
 
          	  //var para = document.createElement("P");
           	//var indent = document.createTextNode("  TEST  ");
