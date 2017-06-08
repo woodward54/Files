@@ -14,9 +14,16 @@ firebase.auth().onAuthStateChanged(user => {
               var flight = childSnapshot.key;
 
 
-          console.log("Dates Loaded: " + childKey);
-          console.log("Flight Number: " + flight);
 
+          console.log("Flight Number: " + flight);
+          var p = document.createElement("input");
+          i.type = "checkbox";
+          i.value = childKey;
+          var text = document.createTextNode(" " + flight);
+          var br = document.createElement('br');
+          document.getElementById('dates').appendChild(p);
+          document.getElementById('dates').appendChild(text);
+          document.getElementById('dates').appendChild(br);
 
           /*var div = document.createElement("div");
           var i = document.createElement("input");
@@ -27,6 +34,9 @@ firebase.auth().onAuthStateChanged(user => {
           div.appendChild(text);
           $(".dates").append(div);*/
 
+            });
+          });
+          console.log("Dates Loaded: " + childKey);
           var i = document.createElement("input");
           i.type = "checkbox";
           i.value = childKey;
@@ -35,8 +45,6 @@ firebase.auth().onAuthStateChanged(user => {
           document.getElementById('dates').appendChild(i);
           document.getElementById('dates').appendChild(text);
           document.getElementById('dates').appendChild(br);
-            });
-          });
         });
       });
   }
