@@ -2,10 +2,17 @@ firebase.auth().onAuthStateChanged(user => {
     if (user != null) {
       var name = user.displayName
       const dbRefObject = firebase.database().ref().child(name);
+
       dbRefObject.once('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
-          var flight = childSnapshot.val();
+
+
+          const dbRefObject2 = firebase.database().ref().child(name).childKey;
+          dbRefObject2.once('value', function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+              var flight = childSnapshot.key;
+
 
           console.log("Dates Loaded: " + childKey);
           console.log("Flight Number: " + flight);
@@ -28,6 +35,8 @@ firebase.auth().onAuthStateChanged(user => {
           document.getElementById('dates').appendChild(i);
           document.getElementById('dates').appendChild(text);
           document.getElementById('dates').appendChild(br);
+            });
+          });
         });
       });
   }
