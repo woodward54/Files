@@ -16,11 +16,13 @@ firebase.auth().onAuthStateChanged(user => {
 
 
           console.log("Flight Number: " + flight);
+          var indent = document.createTextNode("   ");
           var p = document.createElement("input");
-          i.type = "checkbox";
-          i.value = childKey;
+          p.type = "checkbox";
+          p.value = childKey;
           var text = document.createTextNode(" " + flight);
           var br = document.createElement('br');
+          document.getElementById('dates').appendChild(indent);
           document.getElementById('dates').appendChild(p);
           document.getElementById('dates').appendChild(text);
           document.getElementById('dates').appendChild(br);
