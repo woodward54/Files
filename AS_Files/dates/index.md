@@ -1,6 +1,6 @@
 ---
 layout: dates
-title: USERS's Data
-excerpt: "A List of Projects"
+title: USERS's Flights
+excerpt: "Flight Data"
 comments: false
 ---
