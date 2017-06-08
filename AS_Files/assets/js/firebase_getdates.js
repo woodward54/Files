@@ -17,26 +17,30 @@ firebase.auth().onAuthStateChanged(user => {
           document.getElementById('dates').appendChild(text);
           document.getElementById('dates').appendChild(br);
 
-          const dbRefObject2 = firebase.database().ref().child(name).child(childKey);
+      /*    const dbRefObject2 = firebase.database().ref().child(name).child(childKey);
           dbRefObject2.once('value', function(snapshot){
             snapshot.forEach(function(childSnapshot2){
               var flight = childSnapshot2.key;
+*/
 
+	  for(int i =0; i < childKey.length; i++)
+	  {
 
+          	console.log("Flight Number: " + flight);
+         	var para = document.createElement("P");
+          	var indent = document.createTextNode("  TEST  ");
+          	var p = document.createElement("input");
+          	p.type = "checkbox";
+          	p.value = childKey;
+          	var text = document.createTextNode(" " + flight);
+          	var br = document.createElement('br');
+          	document.getElementById('dates').appendChild(para);
+          	document.getElementById('dates').appendChild(indent);
+          	document.getElementById('dates').appendChild(p);
+          	document.getElementById('dates').appendChild(text);
+        } 
 
-          console.log("Flight Number: " + flight);
-          var para = document.createElement("P");
-          var indent = document.createTextNode("  TEST  ");
-          var p = document.createElement("input");
-          p.type = "checkbox";
-          p.value = childKey;
-          var text = document.createTextNode(" " + flight);
-          var br = document.createElement('br');
-          document.getElementById('dates').appendChild(para);
-          document.getElementById('dates').appendChild(indent);
-          document.getElementById('dates').appendChild(p);
-          document.getElementById('dates').appendChild(text);
-          //document.getElementById('dates').appendChild(br);
+	 //document.getElementById('dates').appendChild(br);
 
           /*var div = document.createElement("div");
           var i = document.createElement("input");
