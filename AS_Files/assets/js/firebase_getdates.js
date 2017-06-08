@@ -67,8 +67,8 @@ firebase.auth().onAuthStateChanged(user => {
           div.appendChild(text);
           $(".dates").append(div);*/
 
-            });
-          });
+//            });
+  //        });
         });
       });
   }
