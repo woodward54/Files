@@ -1,7 +1,7 @@
 $(function() {
  var currenturl = window.location.href;
  var endurl="http://aeriumsolutions.com/";  
-    if(currenturl.equals(endurl) == true) {}
+    if(currenturl == endurl) {}
     else window.location.href= endurl;
 });
 
