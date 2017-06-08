@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(user => {
           var flight = childSnapshot.val();
 
           console.log("Dates Loaded: " + childKey);
-          console.log("Flight Number: " + flight.childkey);
+          console.log("Flight Number: " + flight);
 
 
           /*var div = document.createElement("div");
