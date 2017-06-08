@@ -4,7 +4,7 @@ const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('btnLogin');
 const btnLogout = document.getElementById('btnLogout');
-const bntBack = document.getElementbyID('btnBack');
+const bntBack = document.getElementById('btnBack');
 
 btnLogin.addEventListener('click', e => {
 // Get email and password
