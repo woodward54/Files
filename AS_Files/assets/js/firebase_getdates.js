@@ -42,9 +42,8 @@ firebase.auth().onAuthStateChanged(user => {
 	  for(var i =0; i < childKey.length; i++)
 	  {
             var flightnum = "Flight " + (i+1);
-            var what = snapshot.val()[childKey].flightnum;
+            snapshot.val()[childKey].flightnum;
           	console.log("Flight Number: " + (i+1));
-            console.log("What: " + what);
 
          	  //var para = document.createElement("P");
           	//var indent = document.createTextNode("  TEST  ");
@@ -113,7 +112,10 @@ function fsearch() {
     //console.log(checked_vals);
     if (checked_vals.length === 1){
         date = checked_vals;
+
+        //flight = checked_vals;
         localStorage.date = date;
+        localStorage.flight = flight;
         window.location.href = "http://aeriumsolutions.com/map";
         /*window.open("/map","_self");*/
     }
