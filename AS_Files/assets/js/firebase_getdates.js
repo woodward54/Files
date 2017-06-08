@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(user => {
 =======
 */
 
-	  for(int i =0; i < childKey.length; i++)
+	  for(var i =0; i < childKey.length; i++)
 	  {
             var flightnum = "Flight " + (i+1);
             system.val()[childKey].flightnum;
