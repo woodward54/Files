@@ -45,14 +45,14 @@ firebase.auth().onAuthStateChanged(user => {
             system.val()[childKey].flightnum;
           	console.log("Flight Number: " + (i+1));
 
-         	  var para = document.createElement("P");
-          	var indent = document.createTextNode("  TEST  ");
+         	  //var para = document.createElement("P");
+          	//var indent = document.createTextNode("  TEST  ");
           	var p = document.createElement("input");
           	p.type = "checkbox";
           	p.value = childKey;
           	var text = document.createTextNode(" " + (i+1));
           	var br = document.createElement('br');
-          	document.getElementById('dates').appendChild(para);
+          	//document.getElementById('dates').appendChild(para);
           	document.getElementById('dates').appendChild(indent);
           	document.getElementById('dates').appendChild(p);
           	document.getElementById('dates').appendChild(text);
