@@ -1,9 +1,9 @@
-function() {
+$(function() {
  var currenturl = window.location.href;
  var endurl="http://aeriumsolutions.com/";  
     if(currenturl.equals(endurl) == true) {}
     else window.location.href= endurl;
-};
+});
 
 
 // dl-menu options
