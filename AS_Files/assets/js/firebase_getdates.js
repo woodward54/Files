@@ -7,6 +7,15 @@ firebase.auth().onAuthStateChanged(user => {
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
 
+          console.log("Dates Loaded: " + childKey);
+          var i = document.createElement("input");
+          i.type = "checkbox";
+          i.value = childKey;
+          var text = document.createTextNode(" " + childKey);
+          var br = document.createElement('br');
+          document.getElementById('dates').appendChild(i);
+          document.getElementById('dates').appendChild(text);
+          document.getElementById('dates').appendChild(br);
 
           const dbRefObject2 = firebase.database().ref().child(name).child(childKey);
           dbRefObject2.once('value', function(snapshot){
@@ -38,15 +47,6 @@ firebase.auth().onAuthStateChanged(user => {
 
             });
           });
-          console.log("Dates Loaded: " + childKey);
-          var i = document.createElement("input");
-          i.type = "checkbox";
-          i.value = childKey;
-          var text = document.createTextNode(" " + childKey);
-          var br = document.createElement('br');
-          document.getElementById('dates').appendChild(i);
-          document.getElementById('dates').appendChild(text);
-          document.getElementById('dates').appendChild(br);
         });
       });
   }
