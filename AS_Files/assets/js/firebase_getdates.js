@@ -5,10 +5,10 @@ firebase.auth().onAuthStateChanged(user => {
       dbRefObject.once('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
           var childKey = childSnapshot.key;
-          var flight = childSnapshot.val().messageText;
+          var flight = childSnapshot.val();
 
           console.log("Dates Loaded: " + childKey);
-          console.log("Flight Number: " + flight);
+          console.log("Flight Number: " + flight.childkey);
 
 
           /*var div = document.createElement("div");
