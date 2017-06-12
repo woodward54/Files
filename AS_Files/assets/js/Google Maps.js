@@ -50,44 +50,10 @@ function initMap()
     pullData.once('value', function (snapshot) {
     count = 0;
     snapshot.forEach(function () {
-
-        // Cases have been added in to handle missing bits of data by filling in with a "No Read" tag. The section has been commented out to avoid issues with testing more important features
-        /* // CASE: TEMP, HUM, & TIME UNDEFINED (Hum is implicitely checked, as in the current data set if there was a Temp, there was also a corresponding Hum
-        if (typeof snapshot.val()["Reading " + count].Temp == "undefined" && snapshot.val()["Reading " + count].Time === null)
-        {
-                blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, "No Read" , "No Read", snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID,"No Read"));
-                console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " " );
-                count++;
-        }
-        // CASE: TIME UNDEFINED
-        else if (snapshot.val()["Reading " + count].Time === null)
-        {
-            blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, "No Read"));
-            console.log(snapshot.val()["Reading " + count].Meth + " " + snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
-            count++;
-        }
-        // CASE: METH UNDEFINED
-        else if (snapshot.val()["Reading " + count].Meth === null)
-        {
-            blipList.push(new mapBlip("No Read", snapshot.val()["Reading " + count].Temp, snapshot.val()["Reading " + count].Hum, snapshot.val()["Reading " + count].Lat, snapshot.val()["Reading " + count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " + count].Time));
-            console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
-            count++;
-        }
-        else
-        {*/
             blipList.push(new mapBlip(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " +count].CO2, snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time, false));
             console.log(snapshot.val()["Reading " + count].Meth, snapshot.val()["Reading " + count].CO2 , snapshot.val()["Reading " +  count].Temp, snapshot.val()["Reading " +  count].Hum, snapshot.val()["Reading " +  count].Lat, snapshot.val()["Reading " +  count].Long, snapshot.val()["Reading " + count].ID, snapshot.val()["Reading " +  count].Time);
             lastID = snapshot.val()["Reading " + count].ID
-        //console.log(snapshot.val()["Reading " + count].Lat + " " + snapshot.val()["Reading " + count].Long + " " + snapshot.val()["Reading " + count].ID + " ");
             count++;
-
-                //This if statement was to exclude some bunk data points from 05_18_2017, keeping around so that we know where the problems were(additionally 1-9 were skipped
-
-        /* if (count == 33 || count == 69 || count == 83 || count == 98 || count == 113 || count==128 || count == 143 || count == 363 || count == 377)
-            {
-                count++;
-            }*/
-        //}
         });
 
 
@@ -104,7 +70,7 @@ function initMap()
         });
 	if(typeof blipList[0] ===  "undefined")
 	{
-		setTimeout("location.reload(true);", 0005);
+		setTimeout("window.location.href = http://aeriumsolutions.com/map", 0005);
 	}
         // Function that assigns the same info window to each marker node, this allows there to only be one info window on the screen at a time
 

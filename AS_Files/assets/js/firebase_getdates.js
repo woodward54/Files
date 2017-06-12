@@ -8,14 +8,19 @@ firebase.auth().onAuthStateChanged(user => {
           var childKey = childSnapshot.key;
 
           console.log("Dates Loaded: " + childKey);
-          var i = document.createElement("input");
+          /*var i = document.createElement("input");
           i.type = "checkbox";
-          i.value = childKey;
-          var text = document.createTextNode(" " + childKey);
-          var br = document.createElement('br');
+          i.value = childKey;*/
+     
+
+//	  var text = document.createTextNode(" " + childKey);   
+	  // drop down box for dates		
+	  var dates_ddbox = document.getElementById("dates-ddbox");
+	  dates_ddbox.options[dates_ddbox.options.length] = new Option(childKey, childKey);
+	/*  var br = document.createElement('br');
           document.getElementById('dates').appendChild(i);
           document.getElementById('dates').appendChild(text);
-          document.getElementById('dates').appendChild(br);
+          document.getElementById('dates').appendChild(br);*/
 
       /*    const dbRefObject2 = firebase.database().ref().child(name).child(childKey);
           dbRefObject2.once('value', function(snapshot){
@@ -35,28 +40,28 @@ firebase.auth().onAuthStateChanged(user => {
           //document.getElementById('box').appendChild(style);
 =======
 */
-
-  for(var i =0; i < childKey.length; i++)
-  {
+/*
+	  for(var i =0; i < childKey.length; i++)
+	  {
             var flightnum = "Flight " + (i+1);
             snapshot.val()[childKey].flightnum;
-          console.log("Flight Number: " + (i+1));
+          	console.log("Flight Number: " + (i+1));
 
-           //var para = document.createElement("P");
-          //var indent = document.createTextNode("  TEST  ");
-          var p = document.createElement("input");
-          p.type = "checkbox";
-          p.value = childKey;
-          var text = document.createTextNode(" " + (i+1));
-          var br = document.createElement('br');
-          //document.getElementById('dates').appendChild(para);
-          //document.getElementById('dates').appendChild(indent);
-          document.getElementById('dates').appendChild(p);
-          document.getElementById('dates').appendChild(text);
+         	  //var para = document.createElement("P");
+          	//var indent = document.createTextNode("  TEST  ");
+          	var p = document.createElement("input");
+          	p.type = "checkbox";
+          	p.value = childKey;
+          	var text = document.createTextNode(" " + (i+1));
+          	var br = document.createElement('br');
+          	//document.getElementById('dates').appendChild(para);
+          	//document.getElementById('dates').appendChild(indent);
+          	document.getElementById('dates').appendChild(p);
+          	document.getElementById('dates').appendChild(text);
             document.getElementById('dates').appendChild(br);
         }
-
- //document.getElementById('dates').appendChild(br);
+*/
+	 //document.getElementById('dates').appendChild(br);
 
           /*var div = document.createElement("div");
           var i = document.createElement("input");
@@ -97,24 +102,47 @@ m+1;
 
 
 window.setInterval(function(){
-  fsearch();
+  dateSearch();
 },500);
 
-function fsearch() {
-    var checked_vals = [];
-    var date;
-    $('#dates input:checkbox:checked').each(function(index) {
+function dateSearch() {
+    //var checkedvalues = [];
+    var dates_ddbox = document.getElementById("dates-ddbox");
+    if(dates_ddbox.options.length > 0)
+    {
+    	 console.log("Text : " + dates_ddbox.options[dates_ddbox.selectedIndex].text +" Value : " + dates_ddbox.options[dates_ddbox.selectedIndex].value);
+	 var name = user.displayName;
+	 var date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
+	 const UAVref = firebase.database.ref(name + "/" + date + "/");	
+	
+	 UAVref.once('value', function (snapshot){
+		snapshot.forEach(function(childSnapshot){
+			var childKey = childSnapshot.key;
+			console.log("Child key: " + childKey);
+
+			var UAV_ddbox = document.getElementById("UAV-ddbox");
+          		UAV_ddbox.options[UAV_ddbox.options.length] = new Option(childKey, childKey);
+		});
+	 });  		
+    }
+    else
+    {
+          console.log("Still Loading...");
+    }
+
+
+/*    $('#dates input:checkbox:checked').each(function(index) {
         checked_vals.push($(this).val());
-    });
+    });*/
     //console.log(checked_vals);
-    if (checked_vals.length === 1){
+   /* if (checked_vals.length === 1){
         date = checked_vals;
 
         //flight = checked_vals;
         localStorage.date = date;
         //localStorage.flight = flight;
-        window.location.href = "http://aeriumsolutions.com/map";
+        window.location.href = "http://aeriumsolutions.com/map";*/
         /*window.open("/map","_self");*/
-    }
+//    }
 
 }
