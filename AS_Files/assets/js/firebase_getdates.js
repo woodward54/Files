@@ -102,7 +102,60 @@ m+1;
 
 window.setInterval(function(){
   dateSearch();
+  UAVSearch();
 } ,500);
+
+function UAVSearch() {
+    //var checkedvalues = []
+      var user = firebase.auth().currentUser;
+      var dates_ddbox = document.getElementById("dates-ddbox");
+      var UAV_ddbox = document.getElementById("UAV_ddbox");
+      var Flight_ddbox = document.getElementById("Flight_ddbox");
+      if(user != null)
+      {
+          if(dates_ddbox.options.length > 0)
+          {
+              if(UAV_ddbox.options.length > 0)
+              {
+                    var name = user.displayName;
+          			    var date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
+                    var UAVname = UAV_ddbox.options[UAV_ddbox.selectedIndex].text;
+                    const Flightref = firebase.database().ref(name + "/" + date + "/" + UAVname + "/");
+                    var currentOpt = false;
+                    if (UAVname != localStorage.UAVname || date != localStorage.date)
+                    {
+                          console.log( "TEST TO SEE IF THIS EVER HAPPENS");
+                          flight_ddbox.options.length = 0;
+                    }
+
+                    Flightref.once('value', function (snapshot){
+          				        snapshot.forEach(function(childSnapshot){
+          					             var childKey = childSnapshot.key;
+          					             console.log("Child key: " + childKey);
+
+                                 for (var i =0; i<flight_ddbox.options.length; i++)
+                                 {
+                                   if(flight_ddbox.options[i].value == childKey)
+                                   {
+                                     currentOpt = true;
+                                   }
+                                 }
+                                 if (!currentOpt)
+                                 {
+                                   flight_ddbox.options[flight_ddbox.options.length] = new Option(childKey, childKey);
+                                 }
+                           });
+                      });
+              }
+              localStorage.UAVname = UAVname;
+              localStorage.date = date;
+          }
+       	 	else
+       	 	{
+       	       		console.log("Still Loading...");
+       	 	}
+    }
+  }
 
 function dateSearch() {
     //var checkedvalues = []
