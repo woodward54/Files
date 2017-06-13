@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
     if (user != null) {
-      var name = user.displayName
+      var name = user.displayName;
       const dbRefObject = firebase.database().ref().child(name);
 
       dbRefObject.once('value', function(snapshot){
@@ -11,10 +11,10 @@ firebase.auth().onAuthStateChanged(user => {
           /*var i = document.createElement("input");
           i.type = "checkbox";
           i.value = childKey;*/
-     
 
-//	  var text = document.createTextNode(" " + childKey);   
-	  // drop down box for dates		
+
+//	  var text = document.createTextNode(" " + childKey);
+	  // drop down box for dates
 	  var dates_ddbox = document.getElementById("dates-ddbox");
 	  dates_ddbox.options[dates_ddbox.options.length] = new Option(childKey, childKey);
 	/*  var br = document.createElement('br');
@@ -100,36 +100,59 @@ m+1;
   console.log("The Date is: " + dt);
 }
 
-
 window.setInterval(function(){
   dateSearch();
-},500);
+} ,500);
 
 function dateSearch() {
-    //var checkedvalues = [];
-    var dates_ddbox = document.getElementById("dates-ddbox");
-    if(dates_ddbox.options.length > 0)
-    {
-    	 console.log("Text : " + dates_ddbox.options[dates_ddbox.selectedIndex].text +" Value : " + dates_ddbox.options[dates_ddbox.selectedIndex].value);
-	 var name = user.displayName;
-	 var date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
-	 const UAVref = firebase.database.ref(name + "/" + date + "/");	
-	
-	 UAVref.once('value', function (snapshot){
-		snapshot.forEach(function(childSnapshot){
-			var childKey = childSnapshot.key;
-			console.log("Child key: " + childKey);
+    //var checkedvalues = []
+      var user = firebase.auth().currentUser;
+      if(user != null)
+      {
+          var dates_ddbox = document.getElementById("dates-ddbox");
+          if(dates_ddbox.options.length > 0)
+          {
+              console.log("Text : " + dates_ddbox.options[dates_ddbox.selectedIndex].text +" Value : " + dates_ddbox.options[dates_ddbox.selectedIndex].value);
 
-			var UAV_ddbox = document.getElementById("UAV-ddbox");
-          		UAV_ddbox.options[UAV_ddbox.options.length] = new Option(childKey, childKey);
-		});
-	 });  		
-    }
-    else
-    {
-          console.log("Still Loading...");
-    }
 
+                  var name = user.displayName;
+        			    var date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
+                  const UAVref = firebase.database().ref(name + "/" + date + "/");
+                  var UAV_ddbox = document.getElementById("UAV-ddbox");
+                  var currentOpt = false;
+                  if (dates_ddbox.options[dates_ddbox.selectedIndex].text != localStorage.date)
+                  {
+                        console.log( "TEST TO SEE IF THIS EVER HAPPENS");
+                        UAV_ddbox.options.length = 0;
+                  }
+
+                  UAVref.once('value', function (snapshot){
+        				        snapshot.forEach(function(childSnapshot){
+        					             var childKey = childSnapshot.key;
+        					             console.log("Child key: " + childKey);
+
+                               var UAV_ddbox = document.getElementById("UAV-ddbox");
+                               for (var i =0; i<UAV_ddbox.options.length; i++)
+                               {
+                                 if(UAV_ddbox.options[i].value == childKey)
+                                 {
+                                   currentOpt = true;
+                                 }
+                               }
+                               if (!currentOpt)
+                               {
+                                 UAV_ddbox.options[UAV_ddbox.options.length] = new Option(childKey, childKey);
+                               }
+                         });
+                    });
+               localStorage.date = date;
+          }
+       	 	else
+       	 	{
+       	       		console.log("Still Loading...");
+                  return lastDate;
+       	 	}
+    }
 
 /*    $('#dates input:checkbox:checked').each(function(index) {
         checked_vals.push($(this).val());
