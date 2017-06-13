@@ -109,8 +109,8 @@ function UAVSearch() {
     //var checkedvalues = []
       var user = firebase.auth().currentUser;
       var dates_ddbox = document.getElementById("dates-ddbox");
-      var UAV_ddbox = document.getElementById("UAV_ddbox");
-      var Flight_ddbox = document.getElementById("Flight_ddbox");
+      var UAV_ddbox = document.getElementById("UAV-ddbox");
+      var flight_ddbox = document.getElementById("flight-ddbox");
       if(user != null)
       {
           if(dates_ddbox.options.length > 0)
@@ -148,7 +148,6 @@ function UAVSearch() {
                       });
               }
               localStorage.UAVname = UAVname;
-              localStorage.date = date;
           }
        	 	else
        	 	{
@@ -222,3 +221,15 @@ function dateSearch() {
 //    }
 
 }
+
+btnSubmit.addEventListener('click', e=> {
+  var dates_ddbox = document.getElementById("dates-ddbox");
+  var UAV_ddbox = document.getElementById("UAV-ddbox");
+  var flight_ddbox = document.getElementById("flight-ddbox");
+
+  localStorage.date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
+  localStorage.UAVname = UAV_ddbox.options[UAV_ddbox.selectedIndex].text;
+  localStorage.flight = flight_ddbox.options[flight_ddbox.selectedIndex].text;
+  console.log("Date: " + localStorage.date + " UAV: " + localStorage.UAVname + " Flight: " + localStorage.flight);
+  window.location.href = "http://aeriumsolutions.com/map/";
+});

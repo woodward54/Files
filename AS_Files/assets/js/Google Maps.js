@@ -2,7 +2,7 @@
 
 // pullData is used with the name of the current user (name var defined in GoogleMaps_login), and the selected date that the user has selected to view on the previous page.
 //var pullData = firebase.database().ref(name + "/" + localStorage.date + "/" + "Flight " + localStorage.flight);
-var pullData = firebase.database().ref(name + "/" + localStorage.date + "/");
+var pullData = firebase.database().ref(name + "/" + localStorage.date + "/" + localStorage.UAVname + "/" + localStorage.flight + "/");
 /*
     Description:            Class constructor for mapBlip
     Parameters:             "inMeth": integer var for Methane, measured in ppm
