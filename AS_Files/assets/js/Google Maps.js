@@ -68,9 +68,9 @@ function initMap()
             center: { lat: blipList[0].Lat, lng: blipList[0].Long },
             zoom: 16
         });
-	if(typeof blipList[0] ===  "undefined")
+	if(typeof blipList[0] ==  'undefined')
 	{
-		setTimeout("window.location.href = http://aeriumsolutions.com/map", 0005);
+		window.location.href = "http://aeriumsolutions.com/map";
 	}
         // Function that assigns the same info window to each marker node, this allows there to only be one info window on the screen at a time
 
