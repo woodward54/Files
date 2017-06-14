@@ -1,16 +1,15 @@
+// Listner function that is activated upon login
 firebase.auth().onAuthStateChanged(user => {
     if (user != null)
     {
       var name = user.displayName;
-      const dbRefObject = firebase.database().ref().child(name);
+      const dateref = firebase.database().ref().child(name);
 
-      dbRefObject.once('value', function(snapshot){
+      dateref.once('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
             var childKey = childSnapshot.key;
 
-            console.log("Dates Loaded: " + childKey);
-
-        	  // drop down box for dates
+            // Assigning all of the dates in the companies directory to the first drop down box for dates
         	  var dates_ddbox = document.getElementById("dates-ddbox");
         	  dates_ddbox.options[dates_ddbox.options.length] = new Option(childKey, childKey);
         });
@@ -39,13 +38,15 @@ m+1;
   console.log("The Date is: " + dt);
 }
 
+// Functions that make sure the UAV and Flight drop down boxes have the propper elements
 window.setInterval(function(){
   dateSearch();
   UAVSearch();
 } ,500);
 
-function UAVSearch() {
-    //var checkedvalues = []
+// Searchs to see if what UAV is selected, and adds the flights appropriately
+function UAVSearch()
+{
       var user = firebase.auth().currentUser;
       var dates_ddbox = document.getElementById("dates-ddbox");
       var UAV_ddbox = document.getElementById("UAV-ddbox");
@@ -53,32 +54,32 @@ function UAVSearch() {
       if(user != null)
       {
           if(dates_ddbox.options.length > 0)
-          {
+          {                                                                          
               if(UAV_ddbox.options.length > 0)
               {
                     var name = user.displayName;
           			    var date = dates_ddbox.options[dates_ddbox.selectedIndex].text;
                     var UAVname = UAV_ddbox.options[UAV_ddbox.selectedIndex].text;
+                    // Sets up the ref to where flights are in the current directory
                     const Flightref = firebase.database().ref(name + "/" + date + "/" + UAVname + "/");
                     var currentOpt = false;
                     if (UAVname != localStorage.UAVname || date != localStorage.date)
                     {
-                          console.log( "TEST TO SEE IF THIS EVER HAPPENS");
                           flight_ddbox.options.length = 0;
                     }
 
                     Flightref.once('value', function (snapshot){
           				        snapshot.forEach(function(childSnapshot){
           					             var childKey = childSnapshot.key;
-          					             console.log("Child key: " + childKey);
 
-                                 for (var i =0; i<flight_ddbox.options.length; i++)
+                                 // Loop that checks if the current key is in the drop down box, if not it
+                                 /*for (var i =0; i<flight_ddbox.options.length; i++)
                                  {
                                    if(flight_ddbox.options[i].value == childKey)
                                    {
                                      currentOpt = true;
                                    }
-                                 }
+                                 }*/
                                  if (!currentOpt)
                                  {
                                    flight_ddbox.options[flight_ddbox.options.length] = new Option(childKey, childKey);
@@ -95,8 +96,8 @@ function UAVSearch() {
     }
   }
 
-function dateSearch() {
-    //var checkedvalues = []
+function dateSearch()
+{
       var user = firebase.auth().currentUser;
       if(user != null)
       {
