@@ -60,7 +60,11 @@ function initMap()
        // only for reading from the broken data set
        // count = count-18;
 
-
+       if(typeof(blipList[0]) ==  "undefined")
+       {
+         console.log("THE BLIPLIST IS UNDEFINED AND THE WINDOW SHOULD RELOAD");
+         window.location.reload(true);
+       }
 
        // Creates the map centered around the spot of the first Lat and Long values
        map = new google.maps.Map(document.getElementById('map'),
@@ -68,10 +72,7 @@ function initMap()
             center: { lat: blipList[0].Lat, lng: blipList[0].Long },
             zoom: 16
         });
-	if(typeof blipList[0] ==  'undefined')
-	{
-		window.location.href = "http://aeriumsolutions.com/map";
-	}
+
         // Function that assigns the same info window to each marker node, this allows there to only be one info window on the screen at a time
 
 
