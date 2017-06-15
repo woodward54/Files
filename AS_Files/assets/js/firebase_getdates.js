@@ -54,7 +54,7 @@ function UAVSearch()
       if(user != null)
       {
           if(dates_ddbox.options.length > 0)
-          {                                                                          
+          {
               if(UAV_ddbox.options.length > 0)
               {
                     var name = user.displayName;
@@ -73,13 +73,13 @@ function UAVSearch()
           					             var childKey = childSnapshot.key;
 
                                  // Loop that checks if the current key is in the drop down box, if not it
-                                 /*for (var i =0; i<flight_ddbox.options.length; i++)
+                                 for (var i =0; i<flight_ddbox.options.length; i++)
                                  {
                                    if(flight_ddbox.options[i].value == childKey)
                                    {
                                      currentOpt = true;
                                    }
-                                 }*/
+                                 }
                                  if (!currentOpt)
                                  {
                                    flight_ddbox.options[flight_ddbox.options.length] = new Option(childKey, childKey);
