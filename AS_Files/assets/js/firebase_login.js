@@ -21,6 +21,8 @@ promise.catch(e => {
 });
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser){
+
+       
         window.location.href = "http://aeriumsolutions.com/dates";
         /*window.open("/dates","_self");*/
     } else {
