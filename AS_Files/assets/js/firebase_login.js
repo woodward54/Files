@@ -13,16 +13,9 @@ const pass = txtPassword.value;
 const auth = firebase.auth();
 //Sign in
 const promise = auth.signInWithEmailAndPassword(email,pass);
-promise.catch(e => {
-  console.log(e.message);
-  window.alert("The login information you have entered is not correct,\n" +
-  "if you would like to set up an account with us, or recover information\n"+
-  "from your account please contact us");
-});
+
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser){
-
-       
         window.location.href = "http://aeriumsolutions.com/dates";
         /*window.open("/dates","_self");*/
     } else {
@@ -30,7 +23,12 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     }
   });
 });
-
+promise.catch(e => {
+  console.log(e.message);
+  window.alert("The login information you have entered is not correct,\n" +
+  "if you would like to set up an account with us, or recover information\n"+
+  "from your account please contact us");
+});
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
   window.location.href = "http://aeriumsolutions.com/";
