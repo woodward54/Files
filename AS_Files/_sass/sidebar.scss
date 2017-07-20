@@ -1,0 +1,139 @@
+﻿aside#sidebar {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 210px;
+  bottom: 0;
+  background: #454545; }
+  aside#sidebar #menu {
+    margin: 0 0 10px 0;
+    display: block;
+    width: 100%; }
+    aside#sidebar #menu ul, aside#sidebar #menu li {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      list-style: none;
+      font-weight: normal;
+      text-decoration: none;
+      line-height: 1;
+      position: relative; }
+    aside#sidebar #menu > ul > li {
+      border-bottom: 1px solid #4d4d4d; }
+      aside#sidebar #menu > ul > li > a {
+        font-size: 14px;
+        display: block;
+        color: #bfbfbf;
+        font-weight: 400;
+        padding: 12px 15px;
+        position: relative;
+        text-decoration: none; }
+        aside#sidebar #menu > ul > li > a > i {
+          font-size: 14px;
+          margin-right: 10px;
+          color: #bfbfbf;
+          width: 20px;
+          float: left;
+          line-height: 14px;
+          text-align: center; }
+        aside#sidebar #menu > ul > li > a > span {
+          display: block; }
+      aside#sidebar #menu > ul > li.has-sub > a span {
+        background: url(../img/icon_plus.png) 100% center no-repeat; }
+      aside#sidebar #menu > ul > li.has-sub.active > a span {
+        background: url(../img/icon_minus.png) 100% center no-repeat; }
+      aside#sidebar #menu > ul > li.has-sub.active {
+        background: #262626; }
+      aside#sidebar #menu > ul > li.highlight {
+        background: #333333; }
+        aside#sidebar #menu > ul > li.highlight:before {
+          position: absolute;
+          left: 0;
+          height: 100%;
+          border-left: 4px solid #c13334;
+          content: ""; }
+        aside#sidebar #menu > ul > li.highlight:after {
+          position: absolute;
+          left: 4px;
+          top: 11px;
+          height: 0;
+          width: 0;
+          border-left: 5px solid #c13334;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          content: ""; }
+        aside#sidebar #menu > ul > li.highlight a {
+          color: #fdfdfe;
+          font-weight: 600; }
+          aside#sidebar #menu > ul > li.highlight a i {
+            color: #fdfdfe; }
+          aside#sidebar #menu > ul > li.highlight a:hover {
+            text-decoration: none;
+            color: #fdfdfe; }
+            aside#sidebar #menu > ul > li.highlight a:hover i {
+              color: #fdfdfe; }
+      aside#sidebar #menu > ul > li:hover {
+        background: #4d4d4d; }
+    aside#sidebar #menu .current-page {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      height: 0;
+      width: 0;
+      border-right: 9px solid #f2f2f2;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      content: ""; }
+    aside#sidebar #menu ul ul {
+      display: none;
+      background: #ffffff; }
+      aside#sidebar #menu ul ul li {
+        padding: 0;
+        border-bottom: none;
+        border-top: none;
+        background: #2e2e2e;
+        position: relative; }
+        aside#sidebar #menu ul ul li:hover {
+          background: #383838; }
+        aside#sidebar #menu ul ul li .select {
+          font-weight: bold;
+          color: #ecf0f5 !important;
+          position: relative; }
+          aside#sidebar #menu ul ul li .select:after {
+            position: absolute;
+            right: 0;
+            top: 6px;
+            height: 0;
+            width: 0;
+            border-right: 10px solid #f2f2f2;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            content: ""; }
+      aside#sidebar #menu ul ul a {
+        padding: 10px 10px 10px 45px;
+        display: block;
+        color: #999999 !important;
+        font-size: 12px;
+        font-weight: normal;
+        text-decoration: none; }
+        aside#sidebar #menu ul ul a span {
+          -webkit-transition: padding 0.5s ease;
+          -moz-transition: padding 0.5s ease;
+          -ms-transition: padding 0.5s ease;
+          -o-transition: padding 0.5s ease;
+          transition: padding 0.5s ease;
+          padding-left: 5px; }
+          aside#sidebar #menu ul ul a span i {
+            margin-right: 5px; }
+  aside#sidebar .freebies {
+    margin: 20px 15px; }
+
+@media (max-width: 992px) {
+  aside#sidebar {
+    left: -250px;
+    z-index: 1000;
+    height: 100%;
+    background: #454545; }
+    aside#sidebar #menu .current-page {
+      border-right: 0; } }
+

@@ -1,12 +1,13 @@
 ﻿.vertical-menu {
-    width: 200px; /* Set a width if you like */
+    width: 400px; /* Set a width if you like */
 }
 
 .vertical-menu a {
     background-color: #eee; /* Grey background color */
+    font-size: 250%;
     color: black; /* Black text color */
     display: block; /* Make the links appear below each other */
-    padding: 12px; /* Add some padding */
+    padding: 20px; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
 }
 
@@ -15,6 +16,6 @@
 }
 
 .vertical-menu a.active {
-    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    background-color: #2E86C1; /* Add a green color to the "active/current" link */
     color: white;
 }

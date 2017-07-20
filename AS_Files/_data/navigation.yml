@@ -1,4 +1,6 @@
 # Site navigation links
+- title: drone_control_console 
+  url: /drone_control_console/
 
 - title: Dates
   url: /dates/
